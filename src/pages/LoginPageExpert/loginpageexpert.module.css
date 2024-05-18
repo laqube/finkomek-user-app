@@ -57,6 +57,18 @@
 
 .banner_image {
   width: 80%;
+  animation: floating 3s ease-in-out infinite;
+}
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 10px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
 }
 
 .form_message {

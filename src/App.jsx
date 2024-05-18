@@ -38,6 +38,11 @@ const App = () => {
         allowedRoles={["student"]}
       />
       <Route
+        path="/calculators"
+        element={<CalculatorsCatalogue />}
+        allowedRoles={["student"]}
+      />
+      <Route
         path="/settings"
         element={<UserSettings />}
         allowedRoles={["student"]}

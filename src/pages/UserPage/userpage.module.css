@@ -1,0 +1,18 @@
+.page_container {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.page_column {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
