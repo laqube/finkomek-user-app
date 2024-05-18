@@ -1,69 +1,77 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./loginpageexpert.module.css";
+import axios from "axios";
 
 const LoginPageExpert = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
 
     try {
-      const response = await fetch("http://localhost:8181/expert/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await axios.post(
+        `${apiKey}/expert/login`,
+        {
+          email,
+          password,
         },
-        body: JSON.stringify({ email, password }),
-      });
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      const data = await response.json();
+      const data = response.data;
 
-      if (response.ok) {
-        // Успешная аутентификация, сохраняем токен
+      if (response.status === 200) {
+        // Бәрі норм
         localStorage.setItem("token", data.token);
         localStorage.setItem("email", data.email);
         localStorage.setItem("fname", data.fname);
-        // Сообщение об успехе (опционально)
+        // Success message (optional)
         setMessage(data.message);
-        // Перенаправление на главную страницу
-        navigate("/");
+        // Redirect to the main page
+        navigate("/expert");
       } else {
-        // Ошибка аутентификации, отображаем сообщение об ошибке
+        // Authentication error, display error message
         setMessage(data.message);
       }
     } catch (error) {
-      console.error("There was an error!", error);
-      setMessage("Failed to login due to an error.");
+      console.error("Қате орнады", error);
+      setMessage("Кіру барысында бірбәле бұзылды ((");
     }
   };
 
   return (
     <div className={styles.page_container}>
       <div className={styles.form_container}>
-        <form className={styles.form_login}>
+        <form className={styles.form_login} onSubmit={handleSubmit}>
+          <h1>Кіру</h1>
           <input
             className={styles.form_input}
             type="email"
-            placeholder="Email"
+            placeholder="Электронды пошта"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             className={styles.form_input}
             type="password"
-            placeholder="Password"
+            placeholder="Құпиясөз"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {message && <p className={styles.form_error}>{message}</p>}
           <button className={styles.form_button} type="submit">
-            Login
+            Кіру
           </button>
+          {message && <p className={styles.form_error}>{message}</p>}
         </form>
       </div>
       <div className={styles.banner_container}>
