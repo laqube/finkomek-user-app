@@ -1,14 +1,19 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../slices/userSlice";
+import { useNavigate } from "react-router-dom";
 import styles from "./loginpageexpert.module.css";
 import axios from "axios";
 
+const apiKey = import.meta.env.VITE_API_KEY;
+
 const LoginPageExpert = () => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const apiKey = import.meta.env.VITE_API_KEY;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +42,9 @@ const LoginPageExpert = () => {
         localStorage.setItem("fname", data.fname);
         // Success message (optional)
         setMessage(data.message);
-        // Redirect to the main page
+        // Эксперт рөлін беру
+        dispatch(login({ role: "expert" }));
+        // Redirect to the expert page
         navigate("/expert");
       } else {
         // Authentication error, display error message
