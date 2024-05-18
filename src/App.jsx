@@ -9,6 +9,11 @@ import CoursesCatalogue from "./pages/CoursesCatalogue/CoursesCatalogue";
 import ExpertsCatalogue from "./pages/ExpertsCatalogue/ExpertsCatalogue";
 import UserSettings from "./pages/UserSettings/UserSettings";
 import PrivateRoute from "./PrivateRoute";
+import CalculatorsCatalogue from "./pages/CalculatorsCatalogue/CalculatorsCatalogue";
+import CalculatorNet from "./pages/CalculatorNet/CalculatorNet";
+import CalculatorDebt from "./pages/CalculatorDebt/CalculatorDebt";
+import CalculatorGoal from "./pages/CalculatorGoal/CalculatorGoal";
+import CalculatorRetirement from "./pages/CalculatorRetirement/CalculatorRetirement";
 
 const App = () => {
   return (
