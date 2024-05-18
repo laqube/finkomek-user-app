@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../slices/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./loginpage.module.css";
 import axios from "axios";
 
@@ -42,7 +42,7 @@ const LoginPage = () => {
         localStorage.setItem("fname", data.fname);
         // Success message (optional)
         setMessage(data.message);
-        // Эксперт рөлін беру
+        // Оқушы рөлін беру
         dispatch(login({ role: "student" }));
         // Redirect to the expert page
         navigate("/user");
@@ -78,6 +78,12 @@ const LoginPage = () => {
           <button className={styles.form_button} type="submit">
             Кіру
           </button>
+          <p>
+            Тіркелгі жоқ па?{" "}
+            <Link to="/register" style={{ color: "#007bff" }}>
+              Тіркелу
+            </Link>
+          </p>
           {message && <p className={styles.form_error}>{message}</p>}
         </form>
       </div>
