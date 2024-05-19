@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LoginPageExpert from "./pages/LoginPageExpert/LoginPageExpert";
@@ -14,39 +14,40 @@ import CalculatorNet from "./pages/CalculatorNet/CalculatorNet";
 import CalculatorDebt from "./pages/CalculatorDebt/CalculatorDebt";
 import CalculatorGoal from "./pages/CalculatorGoal/CalculatorGoal";
 import CalculatorRetirement from "./pages/CalculatorRetirement/CalculatorRetirement";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const { role } = useSelector((state) => state.user);
+  console.log(role);
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/register" element={<RegistrationPage />} />
-      <Route path="/login-expert" element={<LoginPageExpert />} />
-      <Route path="/user" element={<UserPage />} allowedRoles={["student"]} />
-      <Route
-        path="/expert"
-        element={<ExpertPage />}
-        allowedRoles={["expert"]}
-      />
-      <Route
-        path="/courses"
-        element={<CoursesCatalogue />}
-        allowedRoles={["student"]}
-      />
-      <Route
-        path="/experts"
-        element={<ExpertsCatalogue />}
-        allowedRoles={["student"]}
-      />
-      <Route
-        path="/calculators"
-        element={<CalculatorsCatalogue />}
-        allowedRoles={["student"]}
-      />
-      <Route
-        path="/settings"
-        element={<UserSettings />}
-        allowedRoles={["student"]}
-      />
+      {role === null && (
+        <>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/login-expert" element={<LoginPageExpert />} />
+          <Route path="*" element={<Navigate to={"/"} replace />} />
+        </>
+      )}
+
+      {role === "student" && (
+        <>
+          <Route path="/user" element={<UserPage />} />
+          <Route path="/courses" element={<CoursesCatalogue />} />
+          <Route path="/experts" element={<ExpertsCatalogue />} />
+          <Route path="/calculators" element={<CalculatorsCatalogue />} />
+          <Route path="/course/:courseId" element={<p>asd</p>} />
+          <Route path="/settings" element={<UserSettings />} />
+          <Route path="*" element={<Navigate to={"/user"} replace />} />
+        </>
+      )}
+
+      {role === "expert" && (
+        <>
+          <Route path="/expert" element={<ExpertPage />} />
+          <Route path="*" element={<Navigate to={"/expert"} replace />} />
+        </>
+      )}
     </Routes>
   );
 };

@@ -18,8 +18,14 @@ const LoginPage = () => {
     setMessage(""); // Сброс сообщения перед отправкой формы
 
     try {
+      console.log("check", {
+        email,
+        password,
+        fname,
+        lname,
+      });
       const response = await axios.post(
-        `${apiKey}/user/register`,
+        `${apiKey}/auth/register`,
         {
           email,
           password,
@@ -32,14 +38,13 @@ const LoginPage = () => {
           },
         }
       );
-
-      if (response.status === 200) {
-        alert("Registration successful! You can now login.");
+      console.log("response", response);
+      if (response.data.status === "success") {
         setEmail("");
         setPassword("");
         setFname("");
         setLname("");
-        navigate("/auth/login");
+        navigate("/");
       } else {
         setMessage(response.data.message);
       }
@@ -58,14 +63,14 @@ const LoginPage = () => {
             className={styles.form_input}
             type="name"
             placeholder="Аты"
-            value={email}
+            value={fname}
             onChange={(e) => setFname(e.target.value)}
           />
           <input
             className={styles.form_input}
             type="surname"
             placeholder="Тегі"
-            value={email}
+            value={lname}
             onChange={(e) => setLname(e.target.value)}
           />
           <input

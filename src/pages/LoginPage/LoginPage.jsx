@@ -4,6 +4,7 @@ import { login } from "../../slices/userSlice";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./loginpage.module.css";
 import axios from "axios";
+import { API } from "../../api";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -20,8 +21,12 @@ const LoginPage = () => {
     setMessage("");
 
     try {
+      const response2 = await API.post("/auth/login", {
+        email,
+        password,
+      });
       const response = await axios.post(
-        `${apiKey}/user/login`,
+        `${apiKey}/auth/login`,
         {
           email,
           password,
@@ -32,10 +37,9 @@ const LoginPage = () => {
           },
         }
       );
-
       const data = response.data;
 
-      if (response.status === 200) {
+      if (response.data.status === "success") {
         // Бәрі норм
         localStorage.setItem("token", data.token);
         localStorage.setItem("email", data.email);
@@ -51,7 +55,7 @@ const LoginPage = () => {
         setMessage(data.message);
       }
     } catch (error) {
-      console.error("Қате орнады", error);
+      console.error("Қате орнады", error.response.data);
       setMessage("Кіру барысында бірбәле бұзылды ((");
     }
   };
