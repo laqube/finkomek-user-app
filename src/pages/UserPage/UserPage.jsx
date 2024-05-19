@@ -13,7 +13,9 @@ const UserPage = () => {
         <div className={styles.page_column}>
           <UserCard />
         </div>
-        <div className={styles.page_column}>User Tabs</div>
+        <div className={styles.page_column_tabs}>
+          <UserTabs />
+        </div>
       </div>
       <Footer />
     </div>

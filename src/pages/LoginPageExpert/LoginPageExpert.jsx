@@ -84,7 +84,7 @@ const LoginPageExpert = () => {
       <div className={styles.banner_container}>
         <img
           alt="banner"
-          src="/assets/auth_banner.png"
+          src="/assets/auth_banner_expert.png"
           className={styles.banner_image}
         />
       </div>

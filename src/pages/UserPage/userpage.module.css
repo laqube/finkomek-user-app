@@ -7,17 +7,22 @@
 .page_container {
   z-index: 1;
   display: flex;
-  width: 80%;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+  justify-content: space-between;
+  align-items: start;
 }
 
 .page_column {
   display: flex;
-  width: 100%;
+  width: 80%;
   flex-direction: column;
   gap: 20px;
   align-items: center;
   justify-content: center;
+}
+
+.page_column_tabs {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: start;
 }

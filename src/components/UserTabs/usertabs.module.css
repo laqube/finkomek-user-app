@@ -1,0 +1,63 @@
+.user_tabs_body {
+  display: flex;
+  height: 23rem;
+  width: 80%;
+  max-width: 800px;
+  background-color: #0085a1;
+  color: white;
+  border-radius: 16px;
+  flex-direction: column;
+  margin: 0;
+}
+
+.tab {
+  height: 100%;
+  width: 100%;
+  color: White;
+}
+
+.tab_ul {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+.tab_li_wrapper {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin-left: 20px;
+}
+.tab_li {
+  display: flex;
+  cursor: pointer;
+  color: white;
+}
+
+.tab_li.selected {
+  border-bottom: 2px solid red;
+  color: red;
+}
+
+.panel_container {
+  display: flex;
+  height: 230px;
+  justify-content: start;
+  overflow-y: scroll;
+  margin-left: 20px;
+}
+
+.panel_container::-webkit-scrollbar {
+  width: 6px;
+  height: 1px;
+  border-radius: 6px;
+  background-color: transparent;
+}
+.panel_container::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #aed7e0;
+}
+.panel_container::-webkit-scrollbar-thumb:hover {
+  background-color: #00343f;
+}
