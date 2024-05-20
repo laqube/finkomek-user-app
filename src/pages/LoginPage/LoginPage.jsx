@@ -21,10 +21,10 @@ const LoginPage = () => {
     setMessage("");
 
     try {
-      const response2 = await API.post("/auth/login", {
-        email,
-        password,
-      });
+      // const response2 = await API.post("/auth/login", {
+      //   email,
+      //   password,
+      // });
       const response = await axios.post(
         `${apiKey}/auth/login`,
         {
@@ -42,16 +42,14 @@ const LoginPage = () => {
       if (response.data.status === "success") {
         // Бәрі норм
         localStorage.setItem("token", data.token);
-        localStorage.setItem("email", data.email);
-        localStorage.setItem("fname", data.fname);
+        // localStorage.setItem("email", data.email);
+        // localStorage.setItem("fname", data.fname);
         // Success message (optional)
         setMessage(data.message);
         // Оқушы рөлін беру
         dispatch(login({ role: "student" }));
-        // Redirect to the expert page
         navigate("/user");
       } else {
-        // Authentication error, display error message
         setMessage(data.message);
       }
     } catch (error) {

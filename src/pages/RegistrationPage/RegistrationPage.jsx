@@ -11,7 +11,18 @@ const LoginPage = () => {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [message, setMessage] = useState("");
+  const [code, setCode] = useState("");
   const navigate = useNavigate();
+
+  const handleCodeSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      axios.post(`${apiKey}/auth/send-email`, { email });
+    } catch (error) {
+      console.error("Код жіберілмеді", error);
+      setMessage("Код жіберілмеді");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,6 +90,20 @@ const LoginPage = () => {
             placeholder="Электронды пошта"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+          <button
+            className={styles.form_button}
+            type="button"
+            onClick={handleCodeSubmit}
+          >
+            Код жіберу
+          </button>
+          <input
+            className={styles.form_input}
+            type="text"
+            placeholder="Код"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
           />
           <input
             className={styles.form_input}
