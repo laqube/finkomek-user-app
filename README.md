@@ -25,7 +25,7 @@
 -I don't know, hopefully till the end of this week
 <br>
 <br>
-24/05/2024 | 23:56
+24/05/2024 | 23:56(GMT+5)
 <br>
 -I feel defeated today. Did not write a line of code. I'm doing my best to keep my sanity.
 -Even though theoretically I could do better, I think lack of sleep from the last night affected me too much.
