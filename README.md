@@ -17,13 +17,16 @@
   bun run dev 
  ```
  23/05/2024 | 18:05(GMT+5)
--I believe this repo must be called finkomek-web-app
+<br>
+-I believe this repo must be called finkomek-web-app <br>
 -why?
--Well because there are user and expert applications, two in one. Expert routes are available through /expert-login route.
+-Well because there are user and expert applications, two in one. Expert routes are available through /expert-login route.<br>
 -Ok then, when the expert app will be ready?
 -I don't know, hopefully till the end of this week
-
+<br>
+<br>
 24/05/2024 | 23:56
+<br>
 -I feel defeated today. Did not write a line of code. I'm doing my best to keep my sanity.
 -Even though theoretically I could do better, I think lack of sleep from the last night affected me too much.
 
