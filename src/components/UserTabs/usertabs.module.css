@@ -46,6 +46,8 @@
   justify-content: start;
   overflow-y: scroll;
   margin-left: 20px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .panel_container::-webkit-scrollbar {
