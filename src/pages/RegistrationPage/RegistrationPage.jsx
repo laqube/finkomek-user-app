@@ -27,15 +27,21 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage(""); // Сброс сообщения перед отправкой формы
-
     try {
-      console.log("check", {
-        email,
-        password,
-        fname,
-        lname,
-      });
-      const response = await axios.post(
+      const check = await axios.post(
+        `${apiKey}/auth/check-code`,
+        {
+          email,
+          code,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      axios.post(
         `${apiKey}/auth/register`,
         {
           email,
@@ -49,19 +55,14 @@ const LoginPage = () => {
           },
         }
       );
-      console.log("response", response);
-      if (response.data.status === "success") {
-        setEmail("");
-        setPassword("");
-        setFname("");
-        setLname("");
-        navigate("/");
-      } else {
-        setMessage(response.data.message);
-      }
+      setEmail("");
+      setPassword("");
+      setFname("");
+      setLname("");
+      navigate("/");
     } catch (error) {
-      console.error("Тіркелу барысында қате орнады!", error);
-      setMessage("Failed to register due to an error.");
+      console.error("Код қате(((", error);
+      setMessage("Код Қате");
     }
   };
 

@@ -1,0 +1,13 @@
+.page_wrapper {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  gap: 20px;
+}
+.page_container {
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin: 0 10%;
+}

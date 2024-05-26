@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import styles from "./expertscatalogue.module.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
+import ExpertCatalogueCard from "../../components/ExpertCatalogueCard/ExpertCatalogueCard";
 
 const ExpertsCatalogue = () => {
+  const [experts, setExperts] = useState([
+    {
+      name: "Zaue",
+      certificate: "STEP",
+      experience: "2 years",
+    },
+  ]);
+
   return (
-    <div>
+    <div className={styles.page_wrapper}>
       <Navigation />
-      Experts catalogue
+      <div className={styles.page_container}>
+        {experts.map((expert) => (
+          <ExpertCatalogueCard item={expert} />
+        ))}
+      </div>
       <Footer />
     </div>
   );
