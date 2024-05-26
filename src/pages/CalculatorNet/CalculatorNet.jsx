@@ -1,12 +1,13 @@
 import React from "react";
+import styles from "./calculatornet.module.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 
 const CalculatorNet = () => {
   return (
-    <div>
+    <div className={styles.page_wrapper}>
       <Navigation />
-      Net Worth Calculator
+      <div className={page_container}>Net worth Calculator</div>
       <Footer />
     </div>
   );

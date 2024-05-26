@@ -1,12 +1,13 @@
 import React from "react";
+import styles from "./calculatorretirement.module.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 
 const CalculatorRetirement = () => {
   return (
-    <div>
+    <div className={styles.page_wrapper}>
       <Navigation />
-      Retirement Calculator
+      <div className={page_container}>Retirement calculator</div>
       <Footer />
     </div>
   );
