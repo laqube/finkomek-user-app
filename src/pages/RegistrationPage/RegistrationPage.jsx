@@ -84,20 +84,23 @@ const LoginPage = () => {
             value={lname}
             onChange={(e) => setLname(e.target.value)}
           />
-          <input
-            className={styles.form_input}
-            type="email"
-            placeholder="Электронды пошта"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <button
-            className={styles.form_button}
-            type="button"
-            onClick={handleCodeSubmit}
-          >
-            Код жіберу
-          </button>
+          <div className={styles.form_row}>
+            <input
+              className={styles.form_input}
+              type="email"
+              placeholder="Электронды пошта"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <button
+              className={styles.form_button}
+              type="button"
+              onClick={handleCodeSubmit}
+            >
+              Код жіберу
+            </button>
+          </div>
+
           <input
             className={styles.form_input}
             type="text"

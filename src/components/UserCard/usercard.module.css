@@ -14,10 +14,13 @@
 .user_icon_wrapper {
   display: flex;
   width: 80%;
-  justify-content: end;
+  justify-content: space-between;
 }
 .user_card_icon {
   max-width: 20px;
+}
+.user_card_icon:hover {
+  cursor: pointer;
 }
 .user_card_pfp {
   max-width: 120px;
