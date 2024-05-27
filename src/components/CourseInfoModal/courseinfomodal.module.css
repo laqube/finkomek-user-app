@@ -1,0 +1,76 @@
+.modal_container {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.modal_text_container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.modal_text_h1 {
+  margin: 20px 0 0 20px;
+  font-size: 40px;
+  font-weight: 700;
+  color: #0085a1;
+}
+.modal_text_p {
+  margin: 10px 0 0 20px !important;
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+}
+
+.modal_media_container {
+  display: flex;
+  width: 70%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.modal_media_img {
+  width: 60%;
+  animation: floating 3s ease-in-out infinite;
+}
+
+.modal_buy_button {
+  margin: 20px 0 0 0;
+  display: flex;
+  width: 50%;
+  background-color: #0085a1;
+  color: white;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  height: 40px;
+  border: none;
+  transition: transform 0.5s;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 10px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
+}
+
+.modal_buy_button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
