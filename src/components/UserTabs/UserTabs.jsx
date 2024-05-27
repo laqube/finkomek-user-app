@@ -4,6 +4,7 @@ import styles from "./usertabs.module.css";
 import UserTabs_Tabs from "./UserTabs_Tabs";
 import UserTabs_Panel from "./UserTabs_Panel";
 import BookingCard from "../BookingCard/BookingCard";
+import BoughtCourseCard from "../BoughtCourseCard/BoughtCourseCard";
 
 const UserTabs = () => {
   return (
@@ -11,26 +12,9 @@ const UserTabs = () => {
       <UserTabs_Tabs>
         <UserTabs_Panel title="Күнтізбе">
           <BookingCard />
-          <BookingCard />
-          <BookingCard />
         </UserTabs_Panel>
         <UserTabs_Panel title="Курстар">
-          Panel 2 <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
-          Test <br />
+          <BoughtCourseCard />
         </UserTabs_Panel>
       </UserTabs_Tabs>
     </div>
