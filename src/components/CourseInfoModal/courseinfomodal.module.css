@@ -28,6 +28,12 @@
   color: black;
 }
 
+.modal_text_message {
+  margin: 10px 0 0 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
 .modal_media_container {
   display: flex;
   width: 70%;

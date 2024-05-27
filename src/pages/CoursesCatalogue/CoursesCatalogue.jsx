@@ -30,12 +30,14 @@ const CoursesCatalogue = () => {
             <h1 className={styles.course_name}>
               Қаржылық сауаттылықтың негіздері
             </h1>
-            <button
-              className={styles.course_button_wrapper}
-              onClick={() => handleOpenModal(1)}
-            >
-              <div className={styles.course_button}>Толығырақ</div>
-            </button>
+            <div className={styles.course_button_wrapper}>
+              <button
+                className={styles.course_button}
+                onClick={() => handleOpenModal(1)}
+              >
+                Толығырақ
+              </button>
+            </div>
           </div>
         </div>
         <div className={styles.course_card}>
@@ -46,12 +48,14 @@ const CoursesCatalogue = () => {
           />
           <div className={styles.course_text_wrapper}>
             <h1 className={styles.course_name}>Ақпараттық қауіпсіздік</h1>
-            <button
-              className={styles.course_button_wrapper}
-              onClick={() => handleOpenModal(2)}
-            >
-              <div className={styles.course_button}>Толығырақ</div>
-            </button>
+            <div className={styles.course_button_wrapper}>
+              <button
+                className={styles.course_button}
+                onClick={() => handleOpenModal(2)}
+              >
+                Толығырақ
+              </button>
+            </div>
           </div>
         </div>
         <div className={styles.course_card}>
@@ -62,12 +66,14 @@ const CoursesCatalogue = () => {
           />
           <div className={styles.course_text_wrapper}>
             <h1 className={styles.course_name}>Балаларға арнғалан курс</h1>
-            <button
-              className={styles.course_button_wrapper}
-              onClick={() => handleOpenModal(3)}
-            >
-              <div className={styles.course_button}>Толығырақ</div>
-            </button>
+            <div className={styles.course_button_wrapper}>
+              <button
+                className={styles.course_button}
+                onClick={() => handleOpenModal(3)}
+              >
+                Толығырақ
+              </button>
+            </div>
           </div>
         </div>
         <CourseInfoModal

@@ -56,7 +56,6 @@
   justify-content: end;
   text-decoration: none;
   background: none;
-  border: none;
 }
 
 .course_button {
@@ -74,4 +73,5 @@
   padding: 5px;
   margin-right: 10%;
   box-sizing: border-box;
+  border: none;
 }

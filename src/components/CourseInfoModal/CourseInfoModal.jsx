@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ReactModal from "react-modal";
 import styles from "./courseinfomodal.module.css";
+import axios from "axios";
+import { API } from "../../api";
 const apiKey = import.meta.env.VITE_API_KEY;
 
 const CourseInfoModal = (props) => {
@@ -21,7 +23,7 @@ const CourseInfoModal = (props) => {
         description:
           "Цифрлық әлемде қаржыңызды қорғау үшін маңызды дағдыларды үйреніңіз. Бұл курс киберқауіпсіздік негіздерін, алаяқтықты анықтау және болдырмау, инвестициялық тәуекелдерді түсіну және қаржылық әл-ауқатыңызға қауіп төндіретін деструктивті қаржылық әдеттерді тануды қамтиды.",
         image: "/assets/course_card2.svg",
-        id: "",
+        id: "KAMAL ID",
       };
       break;
     case 3:
@@ -30,7 +32,7 @@ const CourseInfoModal = (props) => {
         description:
           "«Балаларға арналған қаржы» - бұл балаларды ақша әлемімен таныстыруға арналған көңілді және интерактивті курс. Балалар негізгі қаржылық түсініктерді, өз ақшаларын қалай басқару керектігін, бюджеттеу негіздерін және экономиканың қалай жұмыс істейтінін біледі. Бұл курстың соңында балалар өскенде ақылды қаржылық шешімдер қабылдау үшін берік негізге ие болады.",
         image: "/assets/course_card3.svg",
-        id: "",
+        id: "KAMAL ID",
       };
       break;
 
@@ -38,17 +40,16 @@ const CourseInfoModal = (props) => {
       break;
   }
   const [message, setMessage] = useState("");
-  const [id, setId] = useState("");
   const handleBuyCourse = async (e) => {
     e.preventDefault();
-    setId(content.id);
     try {
-      axios.post(`${apiKey}/user/buy-course${id}`);
+      await API.post(`/user/buy-course/${content.id}`).then(() =>
+        alert("Курс сатып алынды")
+      );
     } catch (error) {
-      setMessage("Курс Сатып алынбады :P");
+      alert("Курс Сатып алынбады :P");
     }
   };
-  console.log(props);
   return (
     <ReactModal
       isOpen={props.isOpen}
@@ -59,7 +60,7 @@ const CourseInfoModal = (props) => {
         <div className={styles.modal_text_container}>
           <h1 className={styles.modal_text_h1}>{content.name}</h1>
           <p className={styles.modal_text_p}>{content.description}</p>
-          {message}
+          {/* <p className={styles.modal_text_message}>{message}</p> */}
         </div>
         <div className={styles.modal_media_container}>
           <img
