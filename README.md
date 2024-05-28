@@ -30,3 +30,16 @@
 -I feel defeated today. Did not write a line of code. I'm doing my best to keep my sanity.
 -Even though theoretically I could do better, I think lack of sleep from the last night affected me too much.
 
+28/05/2024 | 19:40(GMT+5)
+<br>
+-The predefence is tomorrow, gotta work extra hard for this one, and then it's only the matter of implementing videocalls.
+So this is my list of todos for this night:
+<ul>
+ <li>Complete the course purchase on catalogue page</li>
+ <li>Render purchased course list on user page</li>
+ <li>Render course by content</li>
+ <li>Add dynamic routing or think of how to show course content otherwise</li>
+ <li>Work on Expert's page</li>
+ <li>Work on expert's modal or expert's catalogue page(if catalogue, use dynamic routing)</li>
+ <li>Work on Chat layout</li>
+</ul>
