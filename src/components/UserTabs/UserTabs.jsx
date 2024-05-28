@@ -1,21 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styles from "./usertabs.module.css";
 import UserTabs_Tabs from "./UserTabs_Tabs";
 import UserTabs_Panel from "./UserTabs_Panel";
 import BookingCard from "../BookingCard/BookingCard";
 import BoughtCourseCard from "../BoughtCourseCard/BoughtCourseCard";
-
-// const apiKey = import.meta.evn.VITE_API_KEY;
+import { API } from "../../api";
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const UserTabs = () => {
-  // const [courses, setCourses] = useState([]);
-  // useEffect(() => {
-  //   axios.get(`${apiKey}/user/get-courses`).then((response) => {
-  //     setCourses(response.data.course);
-  //   });
-  // }, []);
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    API.get(`${apiKey}/user/get-courses`)
+      .then((response) => {
+        setCourses(response.data.course);
+      })
+      .catch((error) => {
+        console.error("Error fetching courses:", error);
+      });
+  }, []);
   return (
     <div className={styles.user_tabs_body}>
       <UserTabs_Tabs>
@@ -23,7 +25,9 @@ const UserTabs = () => {
           <BookingCard />
         </UserTabs_Panel>
         <UserTabs_Panel title="Курстар">
-          <BoughtCourseCard />
+          {courses.map((course) => (
+            <BoughtCourseCard key={course.id} item={course} />
+          ))}
         </UserTabs_Panel>
       </UserTabs_Tabs>
     </div>

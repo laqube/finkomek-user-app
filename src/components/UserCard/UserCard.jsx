@@ -42,7 +42,7 @@ const UserCard = () => {
   return (
     <div className={styles.user_card_body}>
       <div className={styles.user_icon_wrapper}>
-        <Link exact to="/user/settings">
+        <Link to="/user/settings">
           <img
             src="/assets/edit_icon.svg"
             alt="edit"

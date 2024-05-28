@@ -1,9 +1,8 @@
 import React from "react";
 import styles from "./navigation.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
-  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   return (
     <div className={styles.navbar_container}>
@@ -17,25 +16,25 @@ const Navigation = () => {
         </a>
         <ul className={styles.navbar_ul}>
           <li>
-            <Link exact to="/user" className={styles.navbar_li}>
+            <Link to="/user" className={styles.navbar_li}>
               {" "}
               Жеке{" "}
             </Link>
           </li>
           <li>
-            <Link exact to="/experts" className={styles.navbar_li}>
+            <Link to="/experts" className={styles.navbar_li}>
               {" "}
               Эксперттер{" "}
             </Link>
           </li>
           <li>
-            <Link exact to="/courses" className={styles.navbar_li}>
+            <Link to="/courses" className={styles.navbar_li}>
               {" "}
               Курстар{" "}
             </Link>
           </li>
           <li>
-            <Link exact to="/calculators" className={styles.navbar_li}>
+            <Link to="/calculators" className={styles.navbar_li}>
               {" "}
               Калькуляторлар{" "}
             </Link>

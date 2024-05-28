@@ -8,7 +8,6 @@ import ExpertPage from "./pages/ExpertPage/ExpertPage";
 import CoursesCatalogue from "./pages/CoursesCatalogue/CoursesCatalogue";
 import ExpertsCatalogue from "./pages/ExpertsCatalogue/ExpertsCatalogue";
 import UserSettings from "./pages/UserSettings/UserSettings";
-import PrivateRoute from "./PrivateRoute";
 import CalculatorsCatalogue from "./pages/CalculatorsCatalogue/CalculatorsCatalogue";
 import CalculatorNet from "./pages/CalculatorNet/CalculatorNet";
 import CalculatorDebt from "./pages/CalculatorDebt/CalculatorDebt";
