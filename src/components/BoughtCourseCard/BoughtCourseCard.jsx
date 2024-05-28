@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./boughtcoursecard.module.css";
 
 const BoughtCourseCard = () => {
+  // const { _id, name } = item;
   return (
     <div className={styles.coursecard_container}>
       <div className={styles.coursecard_img_container}>
@@ -12,7 +13,7 @@ const BoughtCourseCard = () => {
         />
       </div>
       <div className={styles.coursecard_info_container}>
-        <h2 className={styles.coursecard_info_name}> Курс аты</h2>
+        <h2 className={styles.coursecard_info_name}> Name</h2>
         <div className={styles.coursecard_info_status}>
           <img
             className={styles.coursecard_status_img}

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import ReactModal from "react-modal";
 import styles from "./courseinfomodal.module.css";
-import axios from "axios";
 import { API } from "../../api";
-const apiKey = import.meta.env.VITE_API_KEY;
 
 const CourseInfoModal = (props) => {
   let content = "no content";
@@ -23,7 +21,7 @@ const CourseInfoModal = (props) => {
         description:
           "Цифрлық әлемде қаржыңызды қорғау үшін маңызды дағдыларды үйреніңіз. Бұл курс киберқауіпсіздік негіздерін, алаяқтықты анықтау және болдырмау, инвестициялық тәуекелдерді түсіну және қаржылық әл-ауқатыңызға қауіп төндіретін деструктивті қаржылық әдеттерді тануды қамтиды.",
         image: "/assets/course_card2.svg",
-        id: "KAMAL ID",
+        id: "6655e98c2215a242c78740a1",
       };
       break;
     case 3:
@@ -32,14 +30,13 @@ const CourseInfoModal = (props) => {
         description:
           "«Балаларға арналған қаржы» - бұл балаларды ақша әлемімен таныстыруға арналған көңілді және интерактивті курс. Балалар негізгі қаржылық түсініктерді, өз ақшаларын қалай басқару керектігін, бюджеттеу негіздерін және экономиканың қалай жұмыс істейтінін біледі. Бұл курстың соңында балалар өскенде ақылды қаржылық шешімдер қабылдау үшін берік негізге ие болады.",
         image: "/assets/course_card3.svg",
-        id: "KAMAL ID",
+        id: "6655e9252215a242c78740a0",
       };
       break;
 
     default:
       break;
   }
-  const [message, setMessage] = useState("");
   const handleBuyCourse = async (e) => {
     e.preventDefault();
     try {
@@ -60,7 +57,6 @@ const CourseInfoModal = (props) => {
         <div className={styles.modal_text_container}>
           <h1 className={styles.modal_text_h1}>{content.name}</h1>
           <p className={styles.modal_text_p}>{content.description}</p>
-          {/* <p className={styles.modal_text_message}>{message}</p> */}
         </div>
         <div className={styles.modal_media_container}>
           <img

@@ -9,7 +9,6 @@ class UserTabs_Tabs extends Component {
   handleChange(index) {
     this.setState({ selected: index });
   }
-
   render() {
     return (
       <>
