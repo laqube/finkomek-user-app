@@ -12,10 +12,12 @@ const UserTabs = () => {
   useEffect(() => {
     API.get(`${apiKey}/user/get-courses`)
       .then((response) => {
-        setCourses(response.data.course);
+        const courseData = response.data.course || [];
+        setCourses(courseData);
       })
       .catch((error) => {
         console.error("Error fetching courses:", error);
+        setCourses([]);
       });
   }, []);
   return (

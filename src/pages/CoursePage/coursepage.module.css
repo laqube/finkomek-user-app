@@ -1,0 +1,35 @@
+.page_wrapper {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  gap: 10px;
+}
+.page_container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+  margin: 0 10%;
+  align-items: start;
+  width: 90%;
+}
+
+.accordion_container {
+  display: flex;
+  height: 90vh;
+  max-width: 250px;
+  text-wrap: wrap;
+  background-color: #c3dbe5;
+  height: 380px;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.accordion {
+}
+
+.content_container {
+  display: flex;
+  height: 100%;
+  width: 70%;
+}
