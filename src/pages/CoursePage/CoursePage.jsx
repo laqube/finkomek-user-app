@@ -37,7 +37,12 @@ const CoursePage = () => {
               ))}
           </Accordion>
         </div>
-        <div className={styles.content_container}> Content goes here</div>
+        <div className={styles.content_container}>
+          <div className={styles.content_wrapper}>
+            <p>Fisrt pragraph of a lesson</p>
+            <p>Second pragraph of a lesson</p>
+          </div>
+        </div>
       </div>
       <Footer />
     </div>

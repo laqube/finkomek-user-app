@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  justify-content: space-between;
+  justify-content: start;
   margin: 0 10%;
   align-items: start;
   width: 90%;
@@ -16,7 +16,6 @@
 
 .accordion_container {
   display: flex;
-  height: 90vh;
   max-width: 250px;
   text-wrap: wrap;
   background-color: #c3dbe5;
@@ -30,6 +29,14 @@
 
 .content_container {
   display: flex;
-  height: 100%;
-  width: 70%;
+  height: 380px;
+  width: 100%;
+  max-width: 710px;
+  background-color: #e6e6e6;
+  box-shadow: inset 5px 5px 0 0 #54514b54;
+  border-radius: 20px;
+}
+
+.content_wrapper {
+  margin: 20px;
 }
