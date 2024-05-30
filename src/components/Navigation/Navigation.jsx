@@ -49,18 +49,6 @@ const Navigation = () => {
               Консультация
             </Link>
           </li>
-
-          <li>
-            <Link
-              to="/calculators"
-              className={`${styles.navbar_li} ${
-                activeLink === "/calculators" ? styles.active : ""
-              }`}
-              onClick={() => setActiveLink("/calculators")}
-            >
-              Калькуляторлар
-            </Link>
-          </li>
         </ul>
       </div>
     </div>
