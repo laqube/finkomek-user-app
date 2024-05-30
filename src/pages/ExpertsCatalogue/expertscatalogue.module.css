@@ -3,12 +3,24 @@
   height: 100vh;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
+}
+.page_wrapper::-webkit-scrollbar {
+  width: 0px;
+  border-radius: 6px;
+  background-color: transparent;
+}
+.page_wrapper::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #ececec;
+}
+.page_wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #ececec;
 }
 .page_container {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   gap: 40px;
   align-items: start;
-  margin: 0 10%;
+  margin: 0 5%;
 }

@@ -2,7 +2,20 @@
   display: flex;
   height: 100vh;
   flex-direction: column;
+  overflow-y: scroll;
   gap: 20px;
+}
+.page_wrapper::-webkit-scrollbar {
+  width: 0px;
+  border-radius: 6px;
+  background-color: transparent;
+}
+.page_wrapper::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #ececec;
+}
+.page_wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #ececec;
 }
 .page_container {
   display: flex;
