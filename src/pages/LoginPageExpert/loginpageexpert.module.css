@@ -56,7 +56,7 @@
 }
 
 .banner_image {
-  width: 80%;
+  width: 50%;
   animation: floating 3s ease-in-out infinite;
 }
 @keyframes floating {

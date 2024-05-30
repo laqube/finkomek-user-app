@@ -25,7 +25,7 @@ const App = () => {
         <>
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/login-expert" element={<LoginPageExpert />} />
+          <Route path="/expert/login" element={<LoginPageExpert />} />
           <Route path="*" element={<Navigate to={"/"} replace />} />
         </>
       )}

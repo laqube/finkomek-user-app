@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 import { Accordion } from "react-accessible-accordion";
 import MyAccordionItem from "../../components/MyAccordionItem/MyAccordionItem";
 import { API } from "../../api";
-const apiKey = import.meta.env.VITE_API_KEY;
+import CourseContent from "../../components/CourseContent/CourseContent";
 
 const CoursePage = () => {
   let { courseId } = useParams();
@@ -17,6 +17,7 @@ const CoursePage = () => {
       API.get(`/user/${courseId}`)
         .then((response) => {
           setContent(response.data.course);
+          console.log(content.modules);
         })
         .catch((error) => {
           console.error("Error fetching course:", error);
@@ -39,8 +40,10 @@ const CoursePage = () => {
         </div>
         <div className={styles.content_container}>
           <div className={styles.content_wrapper}>
-            <p>Fisrt pragraph of a lesson</p>
-            <p>Second pragraph of a lesson</p>
+            {/* There should be an element <CourseContent/> which is rendered inside of a map function. 
+           It should be reactive and render values should chnage depending 
+           on the clicked child component which is called <MyAccordinItemPanel/>.
+           n.b. MyAccodrionItemPanel is rendered inside of a parent component <MyAccordionItem/> */}
           </div>
         </div>
       </div>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./navigation.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
-  const token = localStorage.getItem("token");
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState(location.pathname);
   return (
     <div className={styles.navbar_container}>
       <div className={styles.navbar_content}>
@@ -16,27 +17,47 @@ const Navigation = () => {
         </a>
         <ul className={styles.navbar_ul}>
           <li>
-            <Link to="/user" className={styles.navbar_li}>
-              {" "}
-              Жеке{" "}
+            <Link
+              to="/user"
+              className={`${styles.navbar_li} ${
+                activeLink === "/user" ? styles.active : ""
+              }`}
+              onClick={() => setActiveLink("/user")}
+            >
+              Жеке
             </Link>
           </li>
           <li>
-            <Link to="/experts" className={styles.navbar_li}>
-              {" "}
-              Эксперттер{" "}
+            <Link
+              to="/experts"
+              className={`${styles.navbar_li} ${
+                activeLink === "/experts" ? styles.active : ""
+              }`}
+              onClick={() => setActiveLink("/experts")}
+            >
+              Эксперттер
             </Link>
           </li>
           <li>
-            <Link to="/courses" className={styles.navbar_li}>
-              {" "}
-              Курстар{" "}
+            <Link
+              to="/courses"
+              className={`${styles.navbar_li} ${
+                activeLink === "/courses" ? styles.active : ""
+              }`}
+              onClick={() => setActiveLink("/courses")}
+            >
+              Курстар
             </Link>
           </li>
           <li>
-            <Link to="/calculators" className={styles.navbar_li}>
-              {" "}
-              Калькуляторлар{" "}
+            <Link
+              to="/calculators"
+              className={`${styles.navbar_li} ${
+                activeLink === "/calculators" ? styles.active : ""
+              }`}
+              onClick={() => setActiveLink("/calculators")}
+            >
+              Калькуляторлар
             </Link>
           </li>
         </ul>

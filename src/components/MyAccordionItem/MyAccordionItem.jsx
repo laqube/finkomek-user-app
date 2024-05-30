@@ -9,7 +9,7 @@ import MyAccordionItemPanel from "../MyAccordionItemPanel/MyAccordionItemPanel";
 
 const MyAccordionItem = ({ item }) => {
   const { module_name, lessons } = item;
-  console.log(item);
+  // console.log(item);
   return (
     <AccordionItem className={styles.accordion__item}>
       <AccordionItemHeading>

@@ -1,21 +1,22 @@
 .navbar_container {
-  background-color: #0085a1;
-  color: #ffffff;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 80px;
   width: 100%;
+  border-bottom: 1px solid #ececec;
 }
 
 .navbar_content {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
-  width: 80%;
+  width: 90%;
 }
 
 .navbar_logo {
-  max-width: 100px;
+  max-width: 120px;
   cursor: pointer;
 }
 
@@ -28,11 +29,16 @@
 .navbar_li {
   font-size: 15;
   font-weight: normal;
+  color: #292d32;
   margin: 0 20px;
-  cursor: pointer;
-  color: white;
   text-decoration: none;
   &:hover {
+    cursor: pointer;
+    color: #4b6bdd;
     text-decoration: underline;
   }
+}
+
+.navbar_li.active {
+  color: #4b6bdd;
 }
