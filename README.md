@@ -16,21 +16,24 @@
  ```bash
   bun run dev 
  ```
- 23/05/2024 | 18:05(GMT+5)
+
+<h1> Dev Logs </h1>
+<b>23/05/2024 | 18:05(GMT+5) </b>
 <br>
 -I believe this repo must be called finkomek-web-app <br>
--why?
+-why?<br>
 -Well because there are user and expert applications, two in one. Expert routes are available through /expert-login route.<br>
 -Ok then, when the expert app will be ready?
 -I don't know, hopefully till the end of this week
 <br>
 <br>
-24/05/2024 | 23:56(GMT+5)
+<b>24/05/2024 | 23:56(GMT+5)</b>
 <br>
 -I feel defeated today. Did not write a line of code. I'm doing my best to keep my sanity.
 -Even though theoretically I could do better, I think lack of sleep from the last night affected me too much.
-
-28/05/2024 | 19:40(GMT+5)
+<br>
+<br>
+<b>28/05/2024 | 19:40(GMT+5) </b>
 <br>
 -The predefence is tomorrow, gotta work extra hard for this one, and then it's only the matter of implementing videocalls.
 So this is my list of todos for this night:
@@ -43,3 +46,11 @@ So this is my list of todos for this night:
  <li>Work on expert's modal or expert's catalogue page(if catalogue, use dynamic routing)</li>
  <li>Work on Chat layout</li>
 </ul>
+<b>30/05/2024 | 10:15(GMT+5) </b>
+<br>
+-So the predefence was yesterday, it went horrific for me. We got the pass to the final defence.
+However we got told to fully redesign the customer flow, rework UX/UI, and we still got chat feature to implement.
+I got lucky my friend is helping me out with UX/UI, because noone from the core team knows how to design.
+After diploma I will onboard on Figma course, UX/UI course and learn design to avoid feeling useless in future.
+<br>
+<br>
