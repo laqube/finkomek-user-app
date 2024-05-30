@@ -29,17 +29,6 @@ const Navigation = () => {
           </li>
           <li>
             <Link
-              to="/experts"
-              className={`${styles.navbar_li} ${
-                activeLink === "/experts" ? styles.active : ""
-              }`}
-              onClick={() => setActiveLink("/experts")}
-            >
-              Эксперттер
-            </Link>
-          </li>
-          <li>
-            <Link
               to="/courses"
               className={`${styles.navbar_li} ${
                 activeLink === "/courses" ? styles.active : ""
@@ -49,6 +38,18 @@ const Navigation = () => {
               Курстар
             </Link>
           </li>
+          <li>
+            <Link
+              to="/experts"
+              className={`${styles.navbar_li} ${
+                activeLink === "/experts" ? styles.active : ""
+              }`}
+              onClick={() => setActiveLink("/experts")}
+            >
+              Консультация
+            </Link>
+          </li>
+
           <li>
             <Link
               to="/calculators"

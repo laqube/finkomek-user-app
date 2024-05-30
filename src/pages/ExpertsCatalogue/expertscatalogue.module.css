@@ -4,6 +4,7 @@
   flex-direction: column;
   gap: 10px;
   overflow-y: scroll;
+  align-items: center;
 }
 .page_wrapper::-webkit-scrollbar {
   width: 0px;
@@ -17,10 +18,21 @@
 .page_wrapper::-webkit-scrollbar-thumb:hover {
   background-color: #ececec;
 }
+
 .page_container {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
   align-items: start;
+  justify-content: start;
+  gap: 2%;
   margin: 0 5%;
+}
+
+.page_heading {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 5%;
+  font-size: 22px;
+  align-self: start;
+  color: #212a35;
 }

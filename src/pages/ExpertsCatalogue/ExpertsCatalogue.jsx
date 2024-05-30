@@ -19,6 +19,9 @@ const ExpertsCatalogue = () => {
   return (
     <div className={styles.page_wrapper}>
       <Navigation />
+      <h1 className={styles.page_heading}>
+        Білікті мамандардың консультациясына жазылыңыз
+      </h1>
       <div className={styles.page_container}>
         {experts.map((expert) => (
           <ExpertCatalogueCard item={expert} />
