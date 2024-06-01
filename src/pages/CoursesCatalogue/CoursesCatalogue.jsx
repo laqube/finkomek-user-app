@@ -3,11 +3,15 @@ import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 import styles from "./coursescatalogue.module.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import CourseInfoModal from "../../components/CourseInfoModal/CourseInfoModal";
+import CourseCatalogueCard from "../../components/CourseCatalogueCard/CourseCatalogueCard";
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const CoursesCatalogue = () => {
   const [isOpen, setisOpen] = useState(false);
   const [courseId, setCourseId] = useState(undefined);
+  const [courses, setCourses] = useState([]);
   const handleOpenModal = (courseId) => {
     setisOpen(true);
     setCourseId(courseId);
@@ -16,66 +20,30 @@ const CoursesCatalogue = () => {
     setisOpen(false);
     setCourseId(undefined);
   };
+  useEffect(() => {
+    axios.get(`${apiKey}/course/get-all-courses`).then((response) => {
+      setCourses(response.data.courses);
+      // console.log(response.data.courses);
+    });
+  }, []);
   return (
     <div className={styles.page_wrapper}>
       <Navigation />
       <div className={styles.page_container}>
-        <div className={styles.course_card}>
-          <img
-            className={styles.course_card_image}
-            alt="image"
-            src="/assets/course_card1.svg"
-          />
-          <div className={styles.course_text_wrapper}>
-            <h1 className={styles.course_name}>
-              Қаржылық сауаттылықтың негіздері
-            </h1>
-            <div className={styles.course_button_wrapper}>
-              <button
-                className={styles.course_button}
-                onClick={() => handleOpenModal(1)}
-              >
-                Толығырақ
-              </button>
-            </div>
-          </div>
+        <div className={styles.catalogue_text_container}>
+          <h1 className={styles.catalogue_heading}>
+            Финтех Курстарымен танысыңыз
+          </h1>
+          <p className={styles.catalogue_paragraph}>
+            Оқу жолыңызды таңдаңыз, дағдыларыңызды дамытыңыз және біліміңізді
+            растаңыз. Барлығы бір жерде.
+          </p>
         </div>
-        <div className={styles.course_card}>
-          <img
-            className={styles.course_card_image}
-            alt="image"
-            src="/assets/course_card2.svg"
-          />
-          <div className={styles.course_text_wrapper}>
-            <h1 className={styles.course_name}>Ақпараттық қауіпсіздік</h1>
-            <div className={styles.course_button_wrapper}>
-              <button
-                className={styles.course_button}
-                onClick={() => handleOpenModal(2)}
-              >
-                Толығырақ
-              </button>
-            </div>
-          </div>
+        <div className={styles.courses_container}>
+          {courses &&
+            courses.map((course) => <CourseCatalogueCard item={course} />)}
         </div>
-        <div className={styles.course_card}>
-          <img
-            className={styles.course_card_image}
-            alt="image"
-            src="/assets/course_card3.svg"
-          />
-          <div className={styles.course_text_wrapper}>
-            <h1 className={styles.course_name}>Балаларға арнғалан курс</h1>
-            <div className={styles.course_button_wrapper}>
-              <button
-                className={styles.course_button}
-                onClick={() => handleOpenModal(3)}
-              >
-                Толығырақ
-              </button>
-            </div>
-          </div>
-        </div>
+
         <CourseInfoModal
           isOpen={isOpen}
           courseId={courseId}

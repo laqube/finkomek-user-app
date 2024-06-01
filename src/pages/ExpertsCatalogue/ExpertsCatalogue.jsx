@@ -23,9 +23,8 @@ const ExpertsCatalogue = () => {
         Білікті мамандардың консультациясына жазылыңыз
       </h1>
       <div className={styles.page_container}>
-        {experts.map((expert) => (
-          <ExpertCatalogueCard item={expert} />
-        ))}
+        {experts &&
+          experts.map((expert) => <ExpertCatalogueCard item={expert} />)}
       </div>
       <Footer />
     </div>
