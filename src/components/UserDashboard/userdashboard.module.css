@@ -1,0 +1,18 @@
+.dashb_henlo {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+}
+
+.dashb_henlo_pic {
+  max-width: 175px;
+}
+
+.dashb_henlo_message {
+  color: #212a35;
+  font-weight: 600;
+  font-size: 24px;
+  margin-left: 10px;
+}

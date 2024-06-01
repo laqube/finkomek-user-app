@@ -1,0 +1,12 @@
+.ucal {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+}
+.ucal_heading {
+  color: #212a35;
+  font-weight: 600;
+  font-size: 20px;
+}
