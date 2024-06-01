@@ -1,21 +1,28 @@
 # Finkomek-user-app
- <a>Finkomek is a platform that provides financial education for citizens of Kazakhstan. This Repo is the user application, one of projects built on microfrontend architecture of a bigger project</a>
 
- # Installation and starting on local machine
- <a>Sfter cloning the repo, you should open a terminal in the root folder of the project<a> 
- ```bash
-  npm i
- ```
- ```bash
-  npm run dev
- ```
- or <br>
- ```bash
-  bun i 
- ```
- ```bash
-  bun run dev 
- ```
+<a>Finkomek is a platform that provides financial education for citizens of Kazakhstan. This Repo is the user application, one of projects built on microfrontend architecture of a bigger project</a>
+
+# Installation and starting on local machine
+
+<a>Sfter cloning the repo, you should open a terminal in the root folder of the project<a>
+
+```bash
+ npm i
+```
+
+```bash
+ npm run dev
+```
+
+or <br>
+
+```bash
+ bun i
+```
+
+```bash
+ bun run dev
+```
 
 <h1> Dev Logs </h1>
 <b>23/05/2024 | 18:05(GMT+5) </b>
@@ -53,4 +60,9 @@ However we got told to fully redesign the customer flow, rework UX/UI, and we st
 I got lucky my friend is helping me out with UX/UI, because noone from the core team knows how to design.
 After diploma I will onboard on Figma course, UX/UI course and learn design to avoid feeling useless in future.
 <br>
+<br>
+<b>1/06/2024 | 22:15(GMT+5)</b>
+<br>
+-Finally finished with all the paperwork, now full focus is on frontend developement once again. 
+I hate paperwork, but it suck that I'm the best at it in my team. There are changes we must make to the presentation couple of days before final diploma defence. Just for the context, We've got a bit over a week until the final defence. So yes, I wish myself luck. Deja vu!
 <br>
