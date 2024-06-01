@@ -67,13 +67,17 @@
 }
 
 .bc_button_yes {
-  background-color: #c4e4ee;
+  background-color: #e7f4f8;
   color: #0c6683;
   border: none;
   border-radius: 6px;
   width: 90px;
   height: 45px;
   cursor: pointer;
+}
+
+.bc_button_yes:hover {
+  background-color: #c4e4ee;
 }
 
 .bc_button_no {
@@ -84,4 +88,8 @@
   width: 90px;
   height: 45px;
   cursor: pointer;
+}
+
+.bc_button_no:hover {
+  background-color: #ffbbac;
 }

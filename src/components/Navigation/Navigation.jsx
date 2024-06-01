@@ -24,7 +24,7 @@ const Navigation = () => {
               }`}
               onClick={() => setActiveLink("/user")}
             >
-              Жеке
+              Басты бет
             </Link>
           </li>
           <li>

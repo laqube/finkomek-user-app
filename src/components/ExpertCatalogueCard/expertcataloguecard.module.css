@@ -79,3 +79,7 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.ecard_button:hover {
+  background-color: #c4e4ee;
+}

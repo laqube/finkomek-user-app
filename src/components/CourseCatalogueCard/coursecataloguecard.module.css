@@ -52,7 +52,7 @@
   align-items: center;
   justify-content: center;
   color: #0c6683;
-  background-color: #c4e4ee;
+  background-color: #e7f4f8;
   width: 110px;
   height: 40px;
   border-radius: 8px;
@@ -60,4 +60,8 @@
   margin-left: 5%;
   border: none;
   cursor: pointer;
+}
+
+.course_button:hover {
+  background-color: #c4e4ee;
 }
