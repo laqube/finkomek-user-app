@@ -1,0 +1,152 @@
+.page_wrapper {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  gap: 10px;
+}
+.page_container {
+  display: flex;
+  justify-content: start;
+  margin: 0;
+  align-items: start;
+}
+
+.check_container {
+  display: flex;
+  margin: 2% auto;
+  width: 75%;
+  height: 400px;
+  border: 1px solid #eceef1;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: start;
+}
+
+.check_col1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: start;
+}
+
+.check_col2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: start;
+}
+
+.col1_container {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  margin: 5% 10%;
+}
+
+.col1_heading {
+  color: #212a35;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.col1_desc {
+  color: #212a35;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.col1_check_name {
+  color: #212a35;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.col1_check_legal {
+  color: #212a35;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.col1_check_row1 {
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px dashed #eceef1;
+}
+.col1_check_row2 {
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.col2_container {
+  display: flex;
+  margin: 5%;
+  border: 1px solid #eceef1;
+  border-radius: 10px;
+  width: 70%;
+  height: 80%;
+  flex-direction: column;
+  padding: 5%;
+}
+
+.col2_heading {
+  color: #212a35;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.col2_input_heading {
+  color: #212a35;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.col2_input {
+  width: 88%;
+  padding: 10px;
+  color: #a1a9b8;
+  background-color: transparent;
+  border: 1px solid #a1a9b8;
+  border-radius: 6px;
+}
+
+.col2_row {
+  display: flex;
+  flex-direction: row;
+  gap: 15%;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.col2_row_item {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.col2_button {
+  margin: 20px 0;
+  display: flex;
+  width: 100%;
+  background-color: #0e7c9f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
