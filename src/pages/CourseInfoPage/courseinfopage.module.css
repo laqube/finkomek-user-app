@@ -1,0 +1,81 @@
+.page_wrapper {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  gap: 10px;
+}
+.page_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin: 0 5%;
+  align-items: start;
+  width: 90%;
+}
+.page_text {
+  display: flex;
+  width: 100%;
+  max-width: 720px;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+
+.page_info {
+  max-height: 460px;
+}
+
+.page_info_heading {
+  color: #212a35;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.page_info_price {
+  color: #018733;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.page_info_tags {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  max-width: 250px;
+}
+
+.page_tag_icon {
+  max-width: 24px;
+}
+
+.page_tag_text {
+  color: #212a35;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 10px 0 0;
+}
+
+.page_info_desc {
+  color: #212a35;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.page_text_button {
+  background-color: #0e7c9f;
+  border: none;
+  border-radius: 6px;
+  width: 110px;
+  height: 40px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px 10px 16px;
+  cursor: pointer;
+}
+
+.page_image {
+  width: 350px;
+  margin: auto;
+}

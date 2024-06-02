@@ -17,7 +17,7 @@ const CoursePage = () => {
       API.get(`/user/${courseId}`)
         .then((response) => {
           setContent(response.data.course);
-          console.log(content.modules);
+          // console.log(content.modules);
         })
         .catch((error) => {
           console.error("Error fetching course:", error);

@@ -15,7 +15,8 @@ import CalculatorGoal from "./pages/CalculatorGoal/CalculatorGoal";
 import CalculatorRetirement from "./pages/CalculatorRetirement/CalculatorRetirement";
 import { useSelector } from "react-redux";
 import CoursePage from "./pages/CoursePage/CoursePage";
-import CheckoutPage from "./pages/ChechoutPage/CheckoutPage";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import CourseInfoPage from "./pages/CourseInfoPage/CourseInfoPage";
 
 const App = () => {
   const { role } = useSelector((state) => state.user);
@@ -39,7 +40,8 @@ const App = () => {
           <Route path="/expert/:expertId" element={<ExpertPage />} />
           <Route path="/expert/checkout/meetId" element={<CheckoutPage />} />
           <Route path="/calculators" element={<CalculatorsCatalogue />} />
-          <Route path="/course/:courseId" element={<CoursePage />} />
+          <Route path="/course/:courseId" element={<CourseInfoPage />} />
+          <Route path="/learn/:courseId" element={<CoursePage />} />
           <Route path="/course/checkout/:courseId" element={<CheckoutPage />} />
           <Route path="/settings" element={<UserSettings />} />
           <Route path="*" element={<Navigate to={"/user"} replace />} />
