@@ -4,9 +4,16 @@
   flex-direction: row;
   align-items: start;
   justify-content: start;
+  flex-direction: column;
+  margin-top: 20px;
 }
 .ucourse_heading {
   color: #212a35;
   font-weight: 600;
   font-size: 20px;
+}
+.ucourse_row {
+  display: flex;
+  width: 50%;
+  height: 70%;
 }

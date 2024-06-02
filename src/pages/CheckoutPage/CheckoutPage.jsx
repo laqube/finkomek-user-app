@@ -15,8 +15,10 @@ const CheckoutPage = () => {
               <p className={styles.col1_desc}>тапсырыс мәліметтері</p>
               <h2 className={styles.col1_check_name}>Stuff name</h2>
               <p className={styles.col1_check_legal}>
-                Lorem ipsum dolor sit amet fjdksla fdjsakl fdjas klfdjsako
-                fdjsakl fdjsklaf f jdksal fdjsklf eiwajfklsdc afdsf
+                Егер де қаражатты қайтарамын десеңіз, сатып алу күнінен бастап
+                14 күн ішінде amigomikos@gmail.com мекенжайына хабарласып, толық
+                аты-жөніңізді, тапсырыс нөмірін, сатып алу күнін және қайтару
+                себебін көрсете отырып, қайтару сұрауын жіберіңіз.
               </p>
               <div className={styles.col1_check_row1}>
                 <p>Курс бағасы</p>

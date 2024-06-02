@@ -10,7 +10,7 @@
   height: 90%;
   gap: 10px;
   border: 1px solid #a1a9b8;
-  margin: 20px 10px;
+  margin: 20px 0px;
 }
 
 .course_card_image {
@@ -57,7 +57,7 @@
   height: 40px;
   border-radius: 8px;
   padding: 5px;
-  margin-left: 5%;
+  margin-left: 25px;
   border: none;
   cursor: pointer;
 }

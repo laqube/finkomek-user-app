@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./userpage.module.css";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
+import { API } from "../../api";
 import UserCard from "../../components/UserCard/UserCard";
 import UserTabs from "../../components/UserTabs/UserTabs";
 import {
@@ -16,13 +17,7 @@ import UserCourses from "../../components/UserCourses/UserCourses";
 import UserCalendar from "../../components/UserCalendar/UserCalendar";
 
 const UserPage = () => {
-  const [user, setUser] = useState({
-    Id: null,
-    email: null,
-    password: null,
-    fname: null,
-    lname: null,
-  });
+  const [user, setUser] = useState([]);
   // const dispatch = useDispatch();
 
   // THIS WILL BE NEEDED AFTERWARDS
@@ -36,11 +31,11 @@ const UserPage = () => {
       try {
         const response = await API.get("/user");
         setUser(response.data.user);
+        console.log(response.data.user);
       } catch (error) {
         console.error("Қате орнады", error.response.data);
       }
     }
-
     fetchUser();
   }, []);
 
@@ -65,8 +60,8 @@ const UserPage = () => {
         </div>
         <div className={styles.page_column_tabs}>
           <UserDashboard item={user} />
-          <UserCourses />
-          <UserCalendar />
+          <UserCourses item={user} />
+          <UserCalendar item={user} />
         </div>
       </div>
       <Footer />
