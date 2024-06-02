@@ -1,7 +1,7 @@
 .ucal {
   display: flex;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
   align-items: start;
   justify-content: start;
 }
@@ -9,4 +9,12 @@
   color: #212a35;
   font-weight: 600;
   font-size: 20px;
+}
+
+.ucal_container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
 }

@@ -3,7 +3,6 @@ import styles from "./usercourses.module.css";
 import { API } from "../../api";
 const apiKey = import.meta.env.VITE_API_KEY;
 import CourseCatalogueCard from "../CourseCatalogueCard/CourseCatalogueCard";
-import BoughtCourseCard from "../BoughtCourseCard/BoughtCourseCard";
 
 const UserCourses = ({ item }) => {
   const [courses, setCourses] = useState([]);

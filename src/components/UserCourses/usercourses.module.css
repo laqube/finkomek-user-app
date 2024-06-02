@@ -15,5 +15,6 @@
 .ucourse_row {
   display: flex;
   width: 50%;
-  height: 70%;
+  height: 150px;
+  flex-wrap: wrap;
 }

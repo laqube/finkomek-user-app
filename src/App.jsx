@@ -43,6 +43,7 @@ const App = () => {
           <Route path="/calculators" element={<CalculatorsCatalogue />} />
           <Route path="/course/:courseId" element={<CourseInfoPage />} />
           <Route path="/learn/:courseId" element={<CoursePage />} />
+          <Route path="/learn/:courseId/:lessonName" element={<CoursePage />} />
           <Route path="/course/checkout/:courseId" element={<CheckoutPage />} />
           <Route path="/settings" element={<UserSettings />} />
           <Route path="*" element={<Navigate to={"/user"} replace />} />

@@ -2,8 +2,10 @@
   animation: fadein 0.35s ease-in;
   color: #00343f;
   cursor: pointer;
-  border-top: 1px solid currentColor;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 0 5px;
 }
-
-.accordion_lesson {
+.accordion__panel:hover {
+  color: #4b6bdd;
 }

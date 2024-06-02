@@ -4,10 +4,12 @@ import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 import { useParams } from "react-router";
 import { API } from "../../api";
+import { Link } from "react-router-dom";
 
 const CourseInfoPage = () => {
   let { courseId } = useParams();
   const [content, setContent] = useState([]);
+  const [status, setStatus] = useState([]);
   useEffect(() => {
     if (courseId) {
       API.get(`/course/${courseId}`)
@@ -20,6 +22,20 @@ const CourseInfoPage = () => {
         });
     }
   }, [courseId]);
+
+  useEffect(() => {
+    if (courseId) {
+      API.get(`/user/${courseId}`)
+        .then((response) => {
+          console.log(response.data.course);
+          response.data.course && setStatus(true);
+        })
+        .catch((error) => {
+          error.response.status === 403 && setStatus(false);
+          console.error("Error fetching course:", error);
+        });
+    }
+  }, []);
   return (
     <div className={styles.page_wrapper}>
       <Navigation />
@@ -44,7 +60,15 @@ const CourseInfoPage = () => {
             </div>
             <p className={styles.page_info_desc}>{content.short_description}</p>
           </div>
-          <button className={styles.page_text_button}>Курсқа өту</button>
+          {status ? (
+            <Link path to={`/learn/${courseId}`}>
+              <button className={styles.page_text_button}>Курсқа өту</button>
+            </Link>
+          ) : (
+            <Link path to="/checkout">
+              <button className={styles.page_text_button}>Сатып алу</button>
+            </Link>
+          )}
         </div>
         <img
           className={styles.page_image}
