@@ -1,16 +1,16 @@
 export function findLessonByName(lessonsData, lessonName) {
-  console.log("Starting search for lesson:", lessonName);
-  console.log("Lessons Data:", lessonsData);
+  // console.log("Starting search for lesson:", lessonName);
+  // console.log("Lessons Data:", lessonsData);
 
   for (let moduleIndex = 0; moduleIndex < lessonsData.length; moduleIndex++) {
     const module = lessonsData[moduleIndex];
-    console.log(`Current module at index ${moduleIndex}:`, module);
+    // console.log(`Current module at index ${moduleIndex}:`, module);
 
     if (!Array.isArray(module.lessons)) {
-      console.log(
-        `Module at index ${moduleIndex} does not contain an array of lessons:`,
-        module.lessons
-      );
+      // console.log(
+      //   `Module at index ${moduleIndex} does not contain an array of lessons:`,
+      //   module.lessons
+      // );
       continue;
     }
 
@@ -20,13 +20,13 @@ export function findLessonByName(lessonsData, lessonName) {
       lessonIndex++
     ) {
       const lesson = module.lessons[lessonIndex];
-      console.log(
-        `Current lesson at index ${lessonIndex} of module ${moduleIndex}:`,
-        lesson
-      );
+      // console.log(
+      //   `Current lesson at index ${lessonIndex} of module ${moduleIndex}:`,
+      //   lesson
+      // );
 
       if (lesson.lesson_name.includes(lessonName)) {
-        console.log("Found lesson:", lesson);
+        // console.log("Found lesson:", lesson);
         return lesson; // Found the lesson, return it
       }
     }

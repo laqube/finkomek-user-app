@@ -60,8 +60,11 @@ const CoursePage = () => {
           {/* There should be an element <CourseContent/> which is rendered inside of a map function. 
            It should be reactive and render values should chnage depending 
            on the clicked child component which is called <MyAccordinItemPanel/>.
-           n.b. MyAccodrionItemPanel is rendered inside of a parent component <MyAccordionItem/> */}
-          <CourseContent lessons={<>{JSON.stringify(currentLesson)}</>} />
+           n.b. MyAccodrionItemPanel is rendered inside of a parent component <MyAccordionItem/>
+           lessons={<>{JSON.stringify(currentLesson)}</>} 
+           item={currentLesson}
+           */}
+          <CourseContent lessons={currentLesson} />
         </div>
       </div>
       <Footer />

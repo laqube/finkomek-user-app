@@ -22,3 +22,10 @@
   font-size: 16px;
   font-weight: 500;
 }
+
+.lesson_video {
+  width: 100%;
+  max-width: 622px;
+  height: 350px;
+  object-fit: cover;
+}
