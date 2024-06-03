@@ -16,9 +16,10 @@ const MyAccordionItem = ({ item }) => {
           {module_name}
         </AccordionItemButton>
       </AccordionItemHeading>
-      {lessons.map((lesson) => (
-        <MyAccordionItemPanel key={lesson.lesson_name} item={lesson} />
-      ))}
+      {lessons &&
+        lessons.map((lesson) => (
+          <MyAccordionItemPanel key={lesson.lesson_name} item={lesson} />
+        ))}
     </AccordionItem>
   );
 };

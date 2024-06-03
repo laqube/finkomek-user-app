@@ -41,7 +41,9 @@ const CoursesCatalogue = () => {
         </div>
         <div className={styles.courses_container}>
           {courses &&
-            courses.map((course) => <CourseCatalogueCard item={course} />)}
+            courses.map((course) => (
+              <CourseCatalogueCard item={course} key={course.courseId} />
+            ))}
         </div>
 
         <CourseInfoModal
