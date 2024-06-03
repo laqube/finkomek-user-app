@@ -9,9 +9,14 @@
 
 .navbar_content {
   display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.navbar_navigation {
+  display: flex;
   justify-content: start;
   align-items: center;
-  width: 90%;
 }
 
 .navbar_logo {
@@ -40,4 +45,42 @@
 
 .navbar_li.active {
   color: #4b6bdd;
+}
+
+.navbar_settings {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+}
+
+.user_card_icon {
+  max-width: 24px;
+  justify-self: end;
+  cursor: pointer;
+}
+
+.navbar_select {
+  background-color: transparent;
+  color: #292d32;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px;
+  border: none;
+  border-radius: 0;
+}
+
+.navbar_select:hover {
+  background-color: transparent;
+}
+
+.navbar_option {
+  color: #292d32;
+  padding: 5px;
+  border: none;
+  border-radius: 0;
+}
+
+.navbar_option:hover {
+  background-color: transparent;
 }

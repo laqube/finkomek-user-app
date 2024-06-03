@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./userpage.module.css";
+import { useTranslation } from "react-i18next";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 import { API } from "../../api";
@@ -17,15 +18,8 @@ import UserCourses from "../../components/UserCourses/UserCourses";
 import UserCalendar from "../../components/UserCalendar/UserCalendar";
 
 const UserPage = () => {
+  const { t } = useTranslation("translation");
   const [user, setUser] = useState([]);
-  // const dispatch = useDispatch();
-
-  // THIS WILL BE NEEDED AFTERWARDS
-  // const handleLogout = (e) => {
-  //   e.preventDefault();
-  //   dispatch(logout());
-  // };
-
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -52,9 +46,9 @@ const UserPage = () => {
             }}
           >
             <Menu>
-              <MenuItem> Жеке парақша</MenuItem>
-              <MenuItem> Менің курстарым </MenuItem>
-              <MenuItem> Кесте </MenuItem>
+              <MenuItem> {t("page_home.user_dashboard")}</MenuItem>
+              <MenuItem> {t("page_home.user_courses")} </MenuItem>
+              <MenuItem> {t("page_home.user_meets")} </MenuItem>
             </Menu>
           </Sidebar>
         </div>

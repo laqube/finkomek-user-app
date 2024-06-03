@@ -7,8 +7,8 @@
   bottom: 0;
   width: 100%;
   height: 80px;
-  padding-top: 2%;
   background-color: transparent;
+  border-top: 1px solid #e4e8ed;
 }
 .content_container {
   display: flex;

@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./bookingcard.module.css";
+import { useTranslation } from "react-i18next";
 
 const BookingCard = () => {
+  const { t } = useTranslation("translation");
   return (
     <div className={styles.bookingcard_container}>
       <div className={styles.bc_col_info}>
@@ -27,8 +29,12 @@ const BookingCard = () => {
         </div>
       </div>
       <div className={styles.bc_col_buttons}>
-        <button className={styles.bc_button_yes}>Қосылу</button>
-        <button className={styles.bc_button_no}>Бас тарту</button>
+        <button className={styles.bc_button_yes}>
+          {t("card_meet.button_connect")}
+        </button>
+        <button className={styles.bc_button_no}>
+          {t("card_meet.button_cancel")}
+        </button>
       </div>
     </div>
   );

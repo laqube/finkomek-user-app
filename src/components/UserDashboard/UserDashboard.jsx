@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./userdashboard.module.css";
+import { useTranslation } from "react-i18next";
 
 const UserDashboard = ({ item }) => {
+  const { t } = useTranslation("translation");
   const { fname } = item;
   return (
     <div className={styles.dashb_henlo}>
@@ -11,7 +13,8 @@ const UserDashboard = ({ item }) => {
         alt="guy"
       />
       <h1 className={styles.dashb_henlo_message}>
-        Қош келдің, {fname}! Бүгін не қызық бар?
+        {t("page_home.dashboard_content.Hello")}
+        {fname}! {t("page_home.dashboard_content.Sup")}
       </h1>
     </div>
   );

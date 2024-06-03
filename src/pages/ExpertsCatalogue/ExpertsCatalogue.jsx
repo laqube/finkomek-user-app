@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "./expertscatalogue.module.css";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 import ExpertCatalogueCard from "../../components/ExpertCatalogueCard/ExpertCatalogueCard";
-import axios from "axios";
-
 const apiKey = import.meta.env.VITE_API_KEY;
 
 const ExpertsCatalogue = () => {
+  const { t } = useTranslation("translation");
   const [experts, setExperts] = useState([]);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const ExpertsCatalogue = () => {
     <div className={styles.page_wrapper}>
       <Navigation />
       <h1 className={styles.page_heading}>
-        Білікті мамандардың консультациясына жазылыңыз
+        {t("page_experts_catalogue.heading")}
       </h1>
       <div className={styles.page_container}>
         {experts &&

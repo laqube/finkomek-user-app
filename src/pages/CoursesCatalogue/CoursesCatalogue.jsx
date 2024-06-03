@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import styles from "./coursescatalogue.module.css";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
-import styles from "./coursescatalogue.module.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import CourseInfoModal from "../../components/CourseInfoModal/CourseInfoModal";
 import CourseCatalogueCard from "../../components/CourseCatalogueCard/CourseCatalogueCard";
 const apiKey = import.meta.env.VITE_API_KEY;
 
 const CoursesCatalogue = () => {
+  const { t } = useTranslation("translation");
   const [isOpen, setisOpen] = useState(false);
   const [courseId, setCourseId] = useState(undefined);
   const [courses, setCourses] = useState([]);
@@ -32,11 +33,10 @@ const CoursesCatalogue = () => {
       <div className={styles.page_container}>
         <div className={styles.catalogue_text_container}>
           <h1 className={styles.catalogue_heading}>
-            Финтех Курстарымен танысыңыз
+            {t("page_courses_catalogue.heading")}
           </h1>
           <p className={styles.catalogue_paragraph}>
-            Оқу жолыңызды таңдаңыз, дағдыларыңызды дамытыңыз және біліміңізді
-            растаңыз. Барлығы бір жерде.
+            {t("page_courses_catalogue.paragraph")}
           </p>
         </div>
         <div className={styles.courses_container}>

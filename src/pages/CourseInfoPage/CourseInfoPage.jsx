@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./courseinfopage.module.css";
+import { useTranslation } from "react-i18next";
+import { API } from "../../api";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
 import { useParams } from "react-router";
-import { API } from "../../api";
 import { Link } from "react-router-dom";
 
 const CourseInfoPage = () => {
+  const { t } = useTranslation("translation");
   let { courseId } = useParams();
   const [content, setContent] = useState([]);
   const [status, setStatus] = useState([]);
@@ -62,11 +64,15 @@ const CourseInfoPage = () => {
           </div>
           {status ? (
             <Link path to={`/learn/${courseId}`}>
-              <button className={styles.page_text_button}>Курсқа өту</button>
+              <button className={styles.page_text_button}>
+                {t("page_courses_catalogue.button_see")}
+              </button>
             </Link>
           ) : (
             <Link path to="/checkout">
-              <button className={styles.page_text_button}>Сатып алу</button>
+              <button className={styles.page_text_button}>
+                {t("page_courses_catalogue.button_buy")}
+              </button>
             </Link>
           )}
         </div>
