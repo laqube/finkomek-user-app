@@ -1,0 +1,57 @@
+.page_wrapper {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  gap: 10px;
+}
+.page_container {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.success_container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.success_icon {
+  max-width: 42px;
+}
+
+.success_heading {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #212a35;
+}
+
+.success_message {
+  margin: 0;
+  font-size: 16px;
+}
+
+.success_button {
+  background-color: #e7f4f8;
+  width: 210px;
+  height: 40px;
+  color: #0e7c9f;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.success_button:hover {
+  background-color: #c4e4ee;
+}

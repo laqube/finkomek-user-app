@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import CoursePage from "./pages/CoursePage/CoursePage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 import CourseInfoPage from "./pages/CourseInfoPage/CourseInfoPage";
+import SuccessPage from "./pages/SuccessPage/SuccessPage";
 
 const App = () => {
   const { role } = useSelector((state) => state.user);
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/learn/:courseId" element={<CoursePage />} />
           <Route path="/learn/:courseId/:lessonName" element={<CoursePage />} />
           <Route path="/course/checkout/:courseId" element={<CheckoutPage />} />
+          <Route path="/success" element={<SuccessPage />} />
           <Route path="/settings" element={<UserSettings />} />
           <Route path="*" element={<Navigate to={"/user"} replace />} />
         </>
