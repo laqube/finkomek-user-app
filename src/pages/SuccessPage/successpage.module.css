@@ -24,7 +24,8 @@
 }
 
 .success_icon {
-  max-width: 42px;
+  width: 42px;
+  margin: 0ә;
 }
 
 .success_heading {
@@ -54,4 +55,8 @@
 
 .success_button:hover {
   background-color: #c4e4ee;
+}
+
+.custom_link {
+  text-decoration: none;
 }

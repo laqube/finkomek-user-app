@@ -18,6 +18,7 @@ import CoursePage from "./pages/CoursePage/CoursePage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 import CourseInfoPage from "./pages/CourseInfoPage/CourseInfoPage";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
+import ExpertDashboard from "./pages/ExpertDashboard/ExpertDashboard";
 
 const App = () => {
   const { role } = useSelector((state) => state.user);
@@ -55,7 +56,7 @@ const App = () => {
 
       {role === "expert" && (
         <>
-          <Route path="/expert" element={<ExpertPage />} />
+          <Route path="/expert/dashboard" element={<ExpertDashboard />} />
           <Route path="*" element={<Navigate to={"/expert"} replace />} />
         </>
       )}

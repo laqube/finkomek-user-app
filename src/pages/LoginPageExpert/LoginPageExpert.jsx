@@ -37,15 +37,11 @@ const LoginPageExpert = () => {
 
       if (response.status === 200) {
         // Бәрі норм
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("email", data.email);
-        localStorage.setItem("fname", data.fname);
-        // Success message (optional)
         setMessage(data.message);
         // Эксперт рөлін беру
         dispatch(login({ role: "expert" }));
         // Redirect to the expert page
-        navigate("/expert");
+        navigate("/expert/dashboard");
       } else {
         // Authentication error, display error message
         setMessage(data.message);
@@ -60,7 +56,7 @@ const LoginPageExpert = () => {
     <div className={styles.page_container}>
       <div className={styles.form_container}>
         <form className={styles.form_login} onSubmit={handleSubmit}>
-          <h1>Кіру</h1>
+          <h1 className={styles.heading}>Кіру</h1>
           <input
             className={styles.form_input}
             type="email"
@@ -82,9 +78,10 @@ const LoginPageExpert = () => {
         </form>
       </div>
       <div className={styles.banner_container}>
+        <h1 className={styles.heading2}> Expert login </h1>
         <img
           alt="banner"
-          src="/assets/auth_banner_expert.png"
+          src="/assets/auth_banner_expert.svg"
           className={styles.banner_image}
         />
       </div>
