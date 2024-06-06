@@ -10,21 +10,20 @@ const apiKey = import.meta.env.VITE_API_KEY;
 
 const CoursesCatalogue = () => {
   const { t } = useTranslation("translation");
-  const [isOpen, setisOpen] = useState(false);
-  const [courseId, setCourseId] = useState(undefined);
+  // const [isOpen, setisOpen] = useState(false);
+  // const [courseId, setCourseId] = useState(undefined);
+  // const handleOpenModal = (courseId) => {
+  //   setisOpen(true);
+  //   setCourseId(courseId);
+  // };
+  // const handleCloseModal = () => {
+  //   setisOpen(false);
+  //   setCourseId(undefined);
+  // };
   const [courses, setCourses] = useState([]);
-  const handleOpenModal = (courseId) => {
-    setisOpen(true);
-    setCourseId(courseId);
-  };
-  const handleCloseModal = () => {
-    setisOpen(false);
-    setCourseId(undefined);
-  };
   useEffect(() => {
     axios.get(`${apiKey}/course/get-all-courses`).then((response) => {
       setCourses(response.data.courses);
-      // console.log(response.data.courses);
     });
   }, []);
   return (
@@ -46,11 +45,11 @@ const CoursesCatalogue = () => {
             ))}
         </div>
 
-        <CourseInfoModal
+        {/* <CourseInfoModal
           isOpen={isOpen}
           courseId={courseId}
           handleCloseModal={handleCloseModal}
-        />
+        /> */}
       </div>
       <Footer />
     </div>

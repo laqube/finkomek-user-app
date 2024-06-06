@@ -17,7 +17,6 @@ const CourseInfoPage = () => {
       API.get(`/course/${courseId}`)
         .then((response) => {
           setContent(response.data.course);
-          console.log(content);
         })
         .catch((error) => {
           console.error("Error fetching course:", error);
@@ -29,7 +28,6 @@ const CourseInfoPage = () => {
     if (courseId) {
       API.get(`/user/${courseId}`)
         .then((response) => {
-          console.log(response.data.course);
           response.data.course && setStatus(true);
         })
         .catch((error) => {

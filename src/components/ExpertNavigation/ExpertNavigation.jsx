@@ -26,7 +26,7 @@ const ExpertNavigation = () => {
   return (
     <div className={styles.navbar_container}>
       <div className={styles.navbar_content}>
-        <a href="https://finkomek-landing.vercel.app/">
+        <a href="/">
           <img
             className={styles.navbar_logo}
             alt="logo"

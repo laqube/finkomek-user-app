@@ -20,6 +20,9 @@ const UserTabs = () => {
         setCourses([]);
       });
   }, []);
+  useEffect(() => {
+    API.get(`${apiKey}/`);
+  });
   return (
     <div className={styles.user_tabs_body}>
       <UserTabs_Tabs>

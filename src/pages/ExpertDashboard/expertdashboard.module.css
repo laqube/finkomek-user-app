@@ -55,6 +55,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: start;
+  min-width: 300px;
   max-width: 340px;
   height: 90%;
   border: 1px solid #e4e8ed;

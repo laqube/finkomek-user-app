@@ -41,6 +41,9 @@ const LoginPageExpert = () => {
         setMessage(data.message);
       }
     } catch (error) {
+      navigate("/expert/login");
+      setEmail("");
+      setPassword("");
       console.error("Қате орнады", error);
       setMessage("Кіру барысында бірбәле бұзылды");
     }
