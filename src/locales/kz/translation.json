@@ -100,5 +100,18 @@
       "button_forward": "Бас тарту",
       "button_back": "Артқа қайту"
     }
+  },
+  "expert": {
+    "heading": "Қош келдіңіз, ",
+    "msg": "Алдағы онлайн кездесулер",
+    "button_create": "+ Уақыт белгілеу",
+    "button_connect": "Қосылу",
+    "button_delete": "Жою",
+    "modal_heading": "Кездесу уақытын белгілеңіз",
+    "modal_name": "Консультация тақырыбы",
+    "modal_day": "Күні",
+    "modal_start": "Басталу уақыты",
+    "modal_end": "Аяқталу уақыты",
+    "modal_submit": "Белгілеу"
   }
 }

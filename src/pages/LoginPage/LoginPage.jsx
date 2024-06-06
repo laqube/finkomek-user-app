@@ -4,7 +4,6 @@ import { login } from "../../slices/userSlice";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./loginpage.module.css";
 import axios from "axios";
-import { API } from "../../api";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -40,13 +39,8 @@ const LoginPage = () => {
       const data = response.data;
 
       if (response.data.status === "success") {
-        // Бәрі норм
         localStorage.setItem("token", data.token);
-        // localStorage.setItem("email", data.email);
-        // localStorage.setItem("fname", data.fname);
-        // Success message (optional)
         setMessage(data.message);
-        // Оқушы рөлін беру
         dispatch(login({ role: "student" }));
         navigate("/user");
       } else {

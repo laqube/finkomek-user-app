@@ -5,14 +5,17 @@ import { logout } from "../../slices/userSlice";
 import { useLanguage } from "../../LanguageContext";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18";
+import { useNavigate } from "react-router";
 
 const ExpertNavigation = () => {
   const { t } = useTranslation("translation");
   const { changeLanguage } = useLanguage();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    navigate("/expert/login");
   };
   const handleLanguageChange = (event) => {
     const selectedLanguage = event.target.value;

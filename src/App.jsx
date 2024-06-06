@@ -57,7 +57,10 @@ const App = () => {
       {role === "expert" && (
         <>
           <Route path="/expert/dashboard" element={<ExpertDashboard />} />
-          <Route path="*" element={<Navigate to={"/expert"} replace />} />
+          <Route
+            path="*"
+            element={<Navigate to={"/expert/dashboard"} replace />}
+          />
         </>
       )}
     </Routes>

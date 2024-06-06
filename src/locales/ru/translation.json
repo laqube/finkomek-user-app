@@ -102,5 +102,18 @@
       "button_forward": "Отменить",
       "button_back": "Назад"
     }
+  },
+  "expert": {
+    "heading": "Добро пожаловать, ",
+    "msg": "Предстоящие онлайн встречи",
+    "button_create": "+ Запланировать время",
+    "button_connect": "Подключиться",
+    "button_delete": "Удалить",
+    "modal_heading": "Запланируйте время встречи",
+    "modal_name": "Тема консультации",
+    "modal_day": "День",
+    "modal_start": "Время начала",
+    "modal_end": "Время окончания",
+    "modal_submit": "Запланировать"
   }
 }

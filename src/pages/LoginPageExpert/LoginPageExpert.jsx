@@ -18,7 +18,6 @@ const LoginPageExpert = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-
     try {
       const response = await axios.post(
         `${apiKey}/expert/login`,
@@ -32,23 +31,18 @@ const LoginPageExpert = () => {
           },
         }
       );
-
       const data = response.data;
-
       if (response.status === 200) {
-        // Бәрі норм
+        localStorage.setItem("token", data.token);
         setMessage(data.message);
-        // Эксперт рөлін беру
         dispatch(login({ role: "expert" }));
-        // Redirect to the expert page
         navigate("/expert/dashboard");
       } else {
-        // Authentication error, display error message
         setMessage(data.message);
       }
     } catch (error) {
       console.error("Қате орнады", error);
-      setMessage("Кіру барысында бірбәле бұзылды ((");
+      setMessage("Кіру барысында бірбәле бұзылды");
     }
   };
 
