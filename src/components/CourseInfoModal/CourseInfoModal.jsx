@@ -40,9 +40,15 @@ const CourseInfoModal = (props) => {
   const handleBuyCourse = async (e) => {
     e.preventDefault();
     try {
-      await API.post(`/user/buy-course/${content.id}`).then(() =>
-        alert("Курс сатып алынды")
-      );
+      // await API.post(`/user/buy-course/${content.id}`).then(() =>
+      //   alert("Курс сатып алынды")
+      // );
+      const msgData = {
+        To: email,
+        Msg: "Your custom message here",
+      };
+      await API.post(`/api/send-msg`, msgData);
+      console.log("Message sent successfully");
     } catch (error) {
       alert("Курс Сатып алынбады :P");
     }

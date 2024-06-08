@@ -5,6 +5,7 @@ import { API } from "../../api";
 import Navigation from "../../components/Navigation/Navigation";
 import ExpertNavigation from "../../components/ExpertNavigation/ExpertNavigation";
 import Footer from "../../components/Footer/Footer";
+import ExpertTabs from "../../components/ExpertTabs/ExpertTabs";
 
 const ExpertDashboard = () => {
   const { t } = useTranslation("translation");
@@ -16,7 +17,17 @@ const ExpertDashboard = () => {
         setExpert(response.data.expert);
       })
       .catch((error) => {
-        console.error("Error fetching course:", error);
+        console.error("Error fetching expert info:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    API.get(`expert/get-meets`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching", error);
       });
   }, []);
   return (
@@ -55,7 +66,7 @@ const ExpertDashboard = () => {
               </button>
             </div>
             <div className={styles.calendar_box}>
-              Calendar will be here, check if can be done using html tables
+              <ExpertTabs item={null} />
             </div>
           </div>
         </div>

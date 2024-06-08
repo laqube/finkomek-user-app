@@ -67,7 +67,7 @@ const CourseInfoPage = () => {
               </button>
             </Link>
           ) : (
-            <Link path to="/checkout">
+            <Link path to={`/course/checkout/${courseId}`}>
               <button className={styles.page_text_button}>
                 {t("page_courses_catalogue.button_buy")}
               </button>

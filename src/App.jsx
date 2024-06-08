@@ -16,6 +16,7 @@ import CalculatorRetirement from "./pages/CalculatorRetirement/CalculatorRetirem
 import { useSelector } from "react-redux";
 import CoursePage from "./pages/CoursePage/CoursePage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import CourseCheckout from "./pages/CourseChekcout/CourseCheckout";
 import CourseInfoPage from "./pages/CourseInfoPage/CourseInfoPage";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
 import ExpertDashboard from "./pages/ExpertDashboard/ExpertDashboard";
@@ -48,7 +49,10 @@ const App = () => {
           <Route path="/course/:courseId" element={<CourseInfoPage />} />
           <Route path="/learn/:courseId" element={<CoursePage />} />
           <Route path="/learn/:courseId/:lessonName" element={<CoursePage />} />
-          <Route path="/course/checkout/:courseId" element={<CheckoutPage />} />
+          <Route
+            path="/course/checkout/:courseId"
+            element={<CourseCheckout />}
+          />
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/settings" element={<UserSettings />} />
           <Route path="/meeting/:roomId" element={<MeetingRoom />} />
