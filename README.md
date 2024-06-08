@@ -67,5 +67,9 @@ After diploma I will onboard on Figma course, UX/UI course and learn design to a
 I hate paperwork, but it suck that I'm the best at it in my team. There are changes we must make to the presentation couple of days before final diploma defence. Just for the context, We've got a bit over a week until the final defence. So yes, I wish myself luck. Deja vu!
 <br>
 <br>
-<b>5/6/2024 23:23(GMT+5)</b>
+<b>5/6/2024 | 23:23(GMT+5)</b>
 -Today I've attended interview to Master's degree program at NU. It went pretty fast, I'm not sure if I did well.
+<br>
+<br>
+<b>8/6/2024 | 19:55(GMT+5)</b>
+-I took a little break after successful websockets connection. Now that I'm back, this night we are going to cooode
