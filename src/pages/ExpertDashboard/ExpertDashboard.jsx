@@ -6,6 +6,7 @@ import Navigation from "../../components/Navigation/Navigation";
 import ExpertNavigation from "../../components/ExpertNavigation/ExpertNavigation";
 import Footer from "../../components/Footer/Footer";
 import ExpertTabs from "../../components/ExpertTabs/ExpertTabs";
+import ExpertCreateModal from "../../components/ExpertCreateModal/ExpertCreateModal";
 
 const ExpertDashboard = () => {
   const { t } = useTranslation("translation");
@@ -30,6 +31,15 @@ const ExpertDashboard = () => {
         console.error("Error fetching", error);
       });
   }, []);
+
+  const [isOpen, setisOpen] = useState(false);
+  const handleOpenModal = () => {
+    setisOpen(true);
+  };
+  const handleCloseModal = () => {
+    setisOpen(false);
+  };
+
   return (
     <div className={styles.page_wrapper}>
       <ExpertNavigation />
@@ -61,14 +71,19 @@ const ExpertDashboard = () => {
               <h1 className={styles.calendar_create_heading}>
                 {t("expert.msg")}
               </h1>
-              <button className={styles.calendar_create_button}>
+              <button
+                className={styles.calendar_create_button}
+                onClick={handleOpenModal}
+              >
                 {t("expert.button_create")}{" "}
               </button>
             </div>
-            <div className={styles.calendar_box}>
-              <ExpertTabs item={null} />
-            </div>
+            <div className={styles.calendar_box}>Calendar should go here</div>
           </div>
+          <ExpertCreateModal
+            isOpen={isOpen}
+            handleCloseModal={handleCloseModal}
+          />
         </div>
       </div>
     </div>
