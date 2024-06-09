@@ -13,6 +13,8 @@ const ExpertPage = () => {
   let { expertId } = useParams();
   const [expert, setExpert] = useState({});
   const [Meetings, setMeetings] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (expertId) {
       API.get(`/expert/${expertId}`)
@@ -23,17 +25,23 @@ const ExpertPage = () => {
           console.error("Error fetching expert:", error);
         });
     }
-  }, []);
+  }, [expertId]);
 
   useEffect(() => {
-    API.get(`/expert/meets/${expertId}`)
-      .then((response) => {
-        console.log("Expert's slots are: ", response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching slots:", error);
-      });
-  }, []);
+    if (expertId) {
+      API.get(`/expert/meets/${expertId}`)
+        .then((response) => {
+          // console.log("Expert's slots are: ", response.data.expert);
+          setMeetings(response.data.expert);
+        })
+        .catch((error) => {
+          console.error("Error fetching slots:", error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  }, [expertId]);
 
   return (
     <div className={styles.page_wrapper}>
@@ -45,8 +53,10 @@ const ExpertPage = () => {
               {t("page_expert.heading")}
             </h1>
             <div className={styles.calendar_box}>
-              {Meetings && Meetings.length > 0 ? (
-                <ExpertTabs />
+              {loading ? (
+                <p>Loading...</p>
+              ) : Meetings && Meetings.length > 0 ? (
+                <ExpertTabs item={Meetings} />
               ) : (
                 <p>Expert has no meetings yet</p>
               )}
