@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./usercalendar.module.css";
 import { useTranslation } from "react-i18next";
 import BookingCard from "../BookingCard/BookingCard";
+import ExpertTabs from "../ExpertTabs/ExpertTabs";
 
 const UserCalendar = () => {
   const { t } = useTranslation("translation");
@@ -11,9 +12,7 @@ const UserCalendar = () => {
         {t("page_home.meets_content.heading")}
       </h1>
       <div className={styles.ucal_container}>
-        <BookingCard />
-        <BookingCard />
-        <BookingCard />
+        <ExpertTabs />
       </div>
     </div>
   );

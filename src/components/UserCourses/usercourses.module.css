@@ -14,7 +14,13 @@
 }
 .ucourse_row {
   display: flex;
-  width: 50%;
-  height: 150px;
+  width: 90%;
+  height: 100%;
   flex-wrap: wrap;
+  gap: 10px 60px;
+}
+
+.ucourse_card {
+  height: 300px;
+  width: 300px;
 }

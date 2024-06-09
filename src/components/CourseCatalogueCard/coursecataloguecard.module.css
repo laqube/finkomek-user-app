@@ -9,16 +9,14 @@
   width: 100%;
   gap: 10px;
   border: 1px solid #a1a9b8;
-  margin: 20px 0px;
+  padding: 10px 20px;
 }
 
 .course_card_image {
   align-self: start;
-  margin-top: 40px;
-  margin-left: 5%;
   display: flex;
   object-fit: cover;
-  width: 60%;
+  width: 40%;
   max-width: 170px;
 }
 .course_text_wrapper {
@@ -30,7 +28,6 @@
   height: 70px;
 }
 .course_name {
-  margin: 5%;
   font-size: 15px;
   font-weight: 500;
   color: #212a35;
@@ -52,11 +49,10 @@
   justify-content: center;
   color: #0c6683;
   background-color: #e7f4f8;
-  width: 110px;
+  width: 110%;
   height: 40px;
   border-radius: 8px;
   padding: 5px;
-  margin-left: 25px;
   border: none;
   cursor: pointer;
 }

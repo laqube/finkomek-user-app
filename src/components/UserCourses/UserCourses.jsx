@@ -24,10 +24,12 @@ const UserCourses = ({ item }) => {
       <h1 className={styles.ucourse_heading}>
         {t("page_home.courses_content.heading")}
       </h1>
-      <div className={styles.ucrouse_row}>
+      <div className={styles.ucourse_row}>
         {courses &&
           courses.map((course) => (
-            <CourseCatalogueCard key={course.div} item={course} />
+            <div className={styles.ucourse_card}>
+              <CourseCatalogueCard key={course.div} item={course} />
+            </div>
           ))}
       </div>
     </div>
