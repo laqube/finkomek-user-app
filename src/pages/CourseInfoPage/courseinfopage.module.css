@@ -3,6 +3,7 @@
   height: 100vh;
   flex-direction: column;
   gap: 10px;
+  justify-content: space-between;
 }
 .page_container {
   display: flex;

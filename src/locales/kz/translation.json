@@ -94,6 +94,7 @@
   "card_meet": {
     "button_connect": "Қосылу",
     "button_cancel": "Бас тарту",
+    "heading": "Күнделікті консультация",
     "modal": {
       "heading": "Кездесуден бас тарту",
       "paragraph": "Кездесуден бас тартқыңыз келеді ме?",

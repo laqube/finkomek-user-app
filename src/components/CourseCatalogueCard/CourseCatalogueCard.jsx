@@ -14,7 +14,7 @@ const CourseCatalogueCard = ({ item }) => {
         <h1 className={styles.course_name}>{name}</h1>
       </div>
       <div className={styles.course_button_wrapper}>
-        <Link path to={`/course/${id}`} style={{ textDecoration: "none" }}>
+        <Link to={`/course/${id}`} style={{ textDecoration: "none" }}>
           <button className={styles.course_button}>
             {t("page_courses_catalogue.button_more")}
           </button>

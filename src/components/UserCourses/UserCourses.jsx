@@ -27,8 +27,8 @@ const UserCourses = ({ item }) => {
       <div className={styles.ucourse_row}>
         {courses &&
           courses.map((course) => (
-            <div className={styles.ucourse_card}>
-              <CourseCatalogueCard key={course.div} item={course} />
+            <div className={styles.ucourse_card} key={course.id}>
+              <CourseCatalogueCard item={course} key={course.id} />
             </div>
           ))}
       </div>

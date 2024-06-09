@@ -3,6 +3,7 @@ import styles from "./usertabs.module.css";
 import UserTabs_Tabs from "./UserTabs_Tabs";
 import UserTabs_Panel from "./UserTabs_Panel";
 import BookingCard from "../BookingCard/BookingCard";
+import ExpertTabs from "../ExpertTabs/ExpertTabs";
 import BoughtCourseCard from "../BoughtCourseCard/BoughtCourseCard";
 import { API } from "../../api";
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -27,7 +28,7 @@ const UserTabs = () => {
     <div className={styles.user_tabs_body}>
       <UserTabs_Tabs>
         <UserTabs_Panel title="Күнтізбе">
-          <BookingCard />
+          {/* <BookingCard /> */}a bookin card example
         </UserTabs_Panel>
         <UserTabs_Panel title="Курстар">
           {courses.map((course) => (

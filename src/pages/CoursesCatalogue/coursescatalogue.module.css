@@ -4,6 +4,7 @@
   flex-direction: column;
   overflow-y: scroll;
   gap: 20px;
+  justify-content: space-between;
 }
 .page_wrapper::-webkit-scrollbar {
   width: 0px;

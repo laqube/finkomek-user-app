@@ -5,24 +5,36 @@ import { useTranslation } from "react-i18next";
 import { API } from "../../api";
 import Navigation from "../../components/Navigation/Navigation";
 import Footer from "../../components/Footer/Footer";
+import ExpertTabs from "../../components/ExpertTabs/ExpertTabs";
 import UserTabs from "../../components/UserTabs/UserTabs";
 
 const ExpertPage = () => {
   const { t } = useTranslation("translation");
   let { expertId } = useParams();
   const [expert, setExpert] = useState({});
+  const [Meetings, setMeetings] = useState([]);
   useEffect(() => {
     if (expertId) {
       API.get(`/expert/${expertId}`)
         .then((response) => {
-          console.log(response.data.expert);
           setExpert(response.data.expert);
         })
         .catch((error) => {
-          console.error("Error fetching course:", error);
+          console.error("Error fetching expert:", error);
         });
     }
   }, []);
+
+  useEffect(() => {
+    API.get(`/expert/meets/${expertId}`)
+      .then((response) => {
+        console.log("Expert's slots are: ", response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching slots:", error);
+      });
+  }, []);
+
   return (
     <div className={styles.page_wrapper}>
       <Navigation />
@@ -33,7 +45,11 @@ const ExpertPage = () => {
               {t("page_expert.heading")}
             </h1>
             <div className={styles.calendar_box}>
-              <UserTabs />
+              {Meetings && Meetings.length > 0 ? (
+                <ExpertTabs />
+              ) : (
+                <p>Expert has no meetings yet</p>
+              )}
             </div>
           </div>
           <div className={styles.expert_box_container}>

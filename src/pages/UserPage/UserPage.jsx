@@ -25,7 +25,6 @@ const UserPage = () => {
       try {
         const response = await API.get("/user");
         setUser(response.data.user);
-        console.log(response.data.user);
       } catch (error) {
         console.error("Қате орнады", error.response.data);
       }
@@ -54,8 +53,8 @@ const UserPage = () => {
         </div>
         <div className={styles.page_column_tabs}>
           <UserDashboard item={user} />
-          <UserCourses item={user} />
           <UserCalendar item={user} />
+          <UserCourses item={user} />
         </div>
       </div>
       <Footer />

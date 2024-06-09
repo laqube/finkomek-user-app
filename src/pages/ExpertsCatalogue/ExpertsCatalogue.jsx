@@ -16,6 +16,7 @@ const ExpertsCatalogue = () => {
       setExperts(response.data.experts);
     });
   }, []);
+  console.log("These are the experts:", experts);
 
   return (
     <div className={styles.page_wrapper}>
@@ -25,7 +26,9 @@ const ExpertsCatalogue = () => {
       </h1>
       <div className={styles.page_container}>
         {experts &&
-          experts.map((expert) => <ExpertCatalogueCard item={expert} />)}
+          experts.map((expert) => (
+            <ExpertCatalogueCard item={expert} key={expert.Id} />
+          ))}
       </div>
       <Footer />
     </div>

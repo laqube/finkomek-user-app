@@ -41,7 +41,7 @@ const CoursesCatalogue = () => {
         <div className={styles.courses_container}>
           {courses &&
             courses.map((course) => (
-              <CourseCatalogueCard item={course} key={course.courseId} />
+              <CourseCatalogueCard item={course} key={course.id} />
             ))}
         </div>
 
