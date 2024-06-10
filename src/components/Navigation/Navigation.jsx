@@ -6,9 +6,11 @@ import { logout } from "../../slices/userSlice";
 import { useLanguage } from "../../LanguageContext";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const { t } = useTranslation("translation");
+  const navigate = useNavigate();
   const location = useLocation();
   const { changeLanguage } = useLanguage();
   const [activeLink, setActiveLink] = useState(location.pathname);
@@ -16,6 +18,7 @@ const Navigation = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    navigate("/");
   };
   const handleLanguageChange = (event) => {
     const selectedLanguage = event.target.value;
