@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import moment from "moment-timezone";
 import { useTranslation } from "react-i18next";
-import { t } from "i18next";
+import { API } from "../../api";
 
 const ExpertTabs = ({ item }) => {
   const [Days, setDays] = useState([]); // Days will be unique dates
@@ -12,7 +12,7 @@ const ExpertTabs = ({ item }) => {
   const { t } = useTranslation("translation");
 
   useEffect(() => {
-    const timezone = "UTC+5";
+    const timezone = "UTC+5"; // Your timezone
     const daysMap = new Map();
     item.forEach((meeting) => {
       const day = moment.tz(meeting.timeStart, timezone).format("YYYY-MM-DD");
@@ -31,14 +31,28 @@ const ExpertTabs = ({ item }) => {
 
     setDays(Array.from(daysMap.keys()));
   }, [item]);
+
   const handleSlotChange = (event) => {
-    setSelectedSlot(event.target.value);
+    setSelectedSlot(Number(event.target.value));
   };
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     if (selectedSlot) {
-      alert("Booking successful!");
-      setSelectedSlot(null);
+      const selectedMeeting = item.find(
+        (meeting) => meeting.Id === selectedSlot
+      );
+      console.log(selectedMeeting.roomId);
+      try {
+        await API.post(`user/meeting/make-appointment`, {
+          roomId: selectedMeeting.roomId,
+        });
+        alert("Booking successful!");
+        setSelectedSlot(null);
+        window.location.reload();
+      } catch (error) {
+        console.error("Error making appointment:", error);
+        alert("Failed to book the meeting. Please try again.");
+      }
     } else {
       alert("Please select a time slot.");
     }
@@ -48,13 +62,13 @@ const ExpertTabs = ({ item }) => {
     <Tabs>
       <TabList>
         {Days.map((day) => (
-          <Tab key={day}>{moment(day).format("DD.MM")}</Tab> // Format day
+          <Tab key={day}>{moment(day).format("DD.MM")}</Tab>
         ))}
       </TabList>
 
       {Days.map((day) => (
         <TabPanel key={day}>
-          <div onChange={handleSlotChange} className={styles.panel_container}>
+          <div className={styles.panel_container}>
             {item
               .filter(
                 (meeting) =>
@@ -73,6 +87,7 @@ const ExpertTabs = ({ item }) => {
                     value={meeting.Id}
                     name="slot"
                     checked={selectedSlot === meeting.Id}
+                    onChange={handleSlotChange}
                     className={styles.timeSlotInput}
                   />
                   <span className={styles.slot}>
