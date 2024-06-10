@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./experttabs.module.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import moment from "moment";
+import moment from "moment-timezone";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
 
@@ -11,33 +11,33 @@ const ExpertTabs = ({ item }) => {
   const [selectedSlot, setSelectedSlot] = useState(null);
   const { t } = useTranslation("translation");
 
-  // Extract unique days and slots within each day
   useEffect(() => {
+    const timezone = "UTC+5";
     const daysMap = new Map();
     item.forEach((meeting) => {
-      const day = moment(meeting.timeStart).format("YYYY-MM-DD"); // Extract date
+      const day = moment.tz(meeting.timeStart, timezone).format("YYYY-MM-DD");
       if (!daysMap.has(day)) {
-        daysMap.set(day, []); // Create empty slot list for new day
+        daysMap.set(day, []);
       }
-      daysMap.get(day).push(meeting); // Add meeting to the day's slot list
+      daysMap.get(day).push(meeting);
     });
 
-    // Sort slots within each day by startTime
     daysMap.forEach((slots) => {
-      slots.sort((a, b) => moment(a.timeStart) - moment(b.timeStart));
+      slots.sort(
+        (a, b) =>
+          moment.tz(a.timeStart, timezone) - moment.tz(b.timeStart, timezone)
+      );
     });
 
-    setDays(Array.from(daysMap.keys())); // Update the Days state
-  }, [item]); // Run this effect whenever the `item` prop changes
-
+    setDays(Array.from(daysMap.keys()));
+  }, [item]);
   const handleSlotChange = (event) => {
     setSelectedSlot(event.target.value);
   };
 
   const handleBooking = () => {
     if (selectedSlot) {
-      alert("Booking successful!"); // Replace with actual booking logic
-      // Reset selected slot after booking
+      alert("Booking successful!");
       setSelectedSlot(null);
     } else {
       alert("Please select a time slot.");
@@ -58,7 +58,8 @@ const ExpertTabs = ({ item }) => {
             {item
               .filter(
                 (meeting) =>
-                  moment(meeting.timeStart).format("YYYY-MM-DD") === day
+                  moment.tz(meeting.timeStart, "UTC+5").format("YYYY-MM-DD") ===
+                  day
               )
               .map((meeting) => (
                 <label
@@ -75,8 +76,8 @@ const ExpertTabs = ({ item }) => {
                     className={styles.timeSlotInput}
                   />
                   <span className={styles.slot}>
-                    {moment(meeting.timeStart).format("HH:mm")} -{" "}
-                    {moment(meeting.timeEnd).format("HH:mm")}
+                    {moment.tz(meeting.timeStart, "UTC+5").format("HH:mm")} -
+                    {moment.tz(meeting.timeEnd, "UTC+5").format("HH:mm")}
                   </span>
                 </label>
               ))}

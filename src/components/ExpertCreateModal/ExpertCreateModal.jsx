@@ -3,6 +3,7 @@ import styles from "./expertcreatemodal.module.css";
 import { API } from "../../api";
 import ReactModal from "react-modal";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 const ExpertCreateModal = (props) => {
   console.log("qwe");
@@ -27,7 +28,18 @@ const ExpertCreateModal = (props) => {
       setDate("");
       setStart("");
       setEnd("");
-      // console.log(bodyText);
+      //   const response = API.post(`/expert/create/meet`, bodyText);
+
+      //   console.log("This is the response", response);
+      //   if (response.status === 200) {
+      //     props.handleCloseModal();
+      //     alert("Success!");
+      //     setDate("");
+      //     setStart("");
+      //     setEnd("");
+      //   } else {
+      //     alert(response.data.message);
+      //   }
     } catch (error) {
       alert(error);
     }
