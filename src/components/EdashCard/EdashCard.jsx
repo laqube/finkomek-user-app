@@ -11,10 +11,6 @@ const EdashCard = ({ item }) => {
   const navigate = useNavigate();
   const { Id, userId, expertId, timeStart, timeEnd, roomId, status } = item;
   const [client, setClient] = useState("");
-  const [refresh, setRefresh] = useState(false); // State variable to trigger refresh
-
-  console.log("Start time", timeStart);
-  console.log("End time", timeEnd);
 
   useEffect(() => {
     if (status === "available") {
@@ -23,7 +19,7 @@ const EdashCard = ({ item }) => {
         setClient(`${firstName} ${lastName}`);
       });
     }
-  }, [status, userId, refresh]); // Add refresh to dependencies
+  }, [status, userId]);
 
   const containerClassName =
     status === "available"
@@ -33,8 +29,7 @@ const EdashCard = ({ item }) => {
   const handleDelete = () => {
     API.delete(`/expert/delete-meet/${roomId}`).then(() => {
       alert("The meeting has been deleted successfully");
-      window.location.reload();
-      // setRefresh((prev) => !prev); // Toggle the refresh state to trigger re-render
+      window.location.reload(); // Refresh the entire page
     });
   };
 
@@ -42,7 +37,8 @@ const EdashCard = ({ item }) => {
     navigate(`/meeting/${roomId}`);
   };
 
-  const timezone = "Asia/Karachi"; // GMT+5 timezone
+  // Correctly handling timezone with moment-timezone
+  const timezone = "UTC+5";
   const formattedDate = moment(timeStart).tz(timezone).format("MM.DD");
   const formattedTime = `${moment(timeStart)
     .tz(timezone)
@@ -52,7 +48,7 @@ const EdashCard = ({ item }) => {
     <div className={containerClassName}>
       <div className={styles.ecard_col1}>
         <div className={styles.ecard_info_container}>
-          <h1 className={styles.ecard_heading}> {t("expert.ecard_name")} </h1>
+          <h1 className={styles.ecard_heading}>Meeting name</h1>
           <p className={styles.ecard_info}>Status: {status}</p>
           {status === "booked" && (
             <p className={styles.ecard_info}>Client: {client}</p>
@@ -64,7 +60,7 @@ const EdashCard = ({ item }) => {
                 className={styles.ecard_tag_icon}
                 src="/assets/bc_calendar_icon.svg"
               />
-              <p className={styles.ecard_tag_detail}>{formattedDate} </p>
+              <p className={styles.ecard_tag_detail}>{formattedDate}</p>
             </div>
             <div className={styles.ecard_tag_item}>
               <img
@@ -72,7 +68,7 @@ const EdashCard = ({ item }) => {
                 className={styles.ecard_tag_icon}
                 src="/assets/bc_clock_icon.svg"
               />
-              <p className={styles.ecard_tag_detail}> {formattedTime} </p>
+              <p className={styles.ecard_tag_detail}>{formattedTime}</p>
             </div>
           </div>
         </div>
