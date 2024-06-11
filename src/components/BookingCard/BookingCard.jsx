@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const BookingCard = ({ item }) => {
   const { t } = useTranslation("translation");
-  console.log("The booking card recieves this item", item);
   const { Id, roomId, status, timeStart, timeEnd, expertId } = item;
   const [expert, setExpert] = useState({});
 

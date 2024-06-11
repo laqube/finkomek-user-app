@@ -28,6 +28,7 @@ const ExpertCreateModal = (props) => {
       setDate("");
       setStart("");
       setEnd("");
+      window.location.reload();
       //   const response = API.post(`/expert/create/meet`, bodyText);
 
       //   console.log("This is the response", response);

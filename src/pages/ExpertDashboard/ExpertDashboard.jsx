@@ -7,10 +7,14 @@ import ExpertNavigation from "../../components/ExpertNavigation/ExpertNavigation
 import Footer from "../../components/Footer/Footer";
 import ExpertTabs from "../../components/ExpertTabs/ExpertTabs";
 import ExpertCreateModal from "../../components/ExpertCreateModal/ExpertCreateModal";
+import ExpertDashboardCalendar from "../../components/ExpertDashboardCalendar/ExpertDashboardCalendar";
 
 const ExpertDashboard = () => {
   const { t } = useTranslation("translation");
   const [expert, setExpert] = useState({});
+  const [meetings, setMeetings] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     API.get(`/expert/get`)
       .then((response) => {
@@ -26,9 +30,13 @@ const ExpertDashboard = () => {
     API.get(`expert/get-meets`)
       .then((response) => {
         console.log(response.data);
+        setMeetings(response.data);
       })
       .catch((error) => {
         console.error("Error fetching", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -78,7 +86,15 @@ const ExpertDashboard = () => {
                 {t("expert.button_create")}{" "}
               </button>
             </div>
-            <div className={styles.calendar_box}>Calendar should go here</div>
+            <div className={styles.calendar_box}>
+              {loading ? (
+                <p>Loading...</p>
+              ) : meetings && meetings.length > 0 ? (
+                <ExpertDashboardCalendar item={meetings} />
+              ) : (
+                <p>Expert has no meetings yet</p>
+              )}
+            </div>
           </div>
           <ExpertCreateModal
             isOpen={isOpen}

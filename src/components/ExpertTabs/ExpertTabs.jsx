@@ -7,12 +7,12 @@ import { useTranslation } from "react-i18next";
 import { API } from "../../api";
 
 const ExpertTabs = ({ item }) => {
-  const [Days, setDays] = useState([]); // Days will be unique dates
+  const [Days, setDays] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const { t } = useTranslation("translation");
 
   useEffect(() => {
-    const timezone = "UTC+5"; // Your timezone
+    const timezone = "UTC+5";
     const daysMap = new Map();
     item.forEach((meeting) => {
       const day = moment.tz(meeting.timeStart, timezone).format("YYYY-MM-DD");

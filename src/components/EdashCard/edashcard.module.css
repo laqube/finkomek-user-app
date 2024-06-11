@@ -1,0 +1,134 @@
+.ecard_container_available {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #eceef1;
+  border-radius: 8px;
+  height: 100px;
+  width: 300px;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ecard_container_booked {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #57625b;
+  border-radius: 8px;
+  height: 100px;
+  width: 300px;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ecard_col1 {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 100%;
+}
+
+.ecard_col2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 100%;
+}
+
+.ecard_button_chat {
+  display: flex;
+  width: 70%;
+  height: 40%;
+  margin: 10%;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #e7f4f8;
+  color: #0c6683;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ecard_button_delete {
+  display: flex;
+  width: 70%;
+  height: 40%;
+  margin: 10%;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ffe1da;
+  color: #ab2204;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ecard_info_container {
+  display: flex;
+  height: 100%;
+  margin: 10px 0 10px 10%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.ecard_info_top {
+  display: flex;
+  flex-direction: column;
+  gap: 20xp;
+  align-items: start;
+}
+
+.ecard_info_bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20xp;
+}
+
+.ecard_heading {
+  color: #212a35;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ecard_info {
+  color: #212a35;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.ecard_tag_row {
+  display: flex;
+  align-self: flex-end;
+  width: 100%;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+}
+
+.ecard_tag_item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ecard_tag_icon {
+  display: flex;
+  max-width: 12px;
+}
+
+.ecard_tag_detail {
+  display: flex;
+  font-size: 12px;
+  margin: 0 0 0 5px;
+}
