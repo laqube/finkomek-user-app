@@ -11,10 +11,10 @@ const UserCalendar = () => {
     async function fetchBookings() {
       const response = await API.get("/user/get-meets");
       setBookings(response.data);
-      console.log("These are all the meets booked by user", response.data);
     }
     fetchBookings();
   }, []);
+
   return (
     <div className={styles.ucal}>
       <h1 className={styles.ucal_heading}>

@@ -39,7 +39,7 @@ const EdashCard = ({ item }) => {
 
   // Correctly handling timezone with moment-timezone
   const timezone = "UTC+5";
-  const formattedDate = moment(timeStart).tz(timezone).format("MM.DD");
+  const formattedDate = moment(timeStart).tz(timezone).format("DD.MM");
   const formattedTime = `${moment(timeStart)
     .tz(timezone)
     .format("HH:mm")}-${moment(timeEnd).tz(timezone).format("HH:mm")}`;
@@ -49,10 +49,7 @@ const EdashCard = ({ item }) => {
       <div className={styles.ecard_col1}>
         <div className={styles.ecard_info_container}>
           <h1 className={styles.ecard_heading}>Meeting name</h1>
-          <p className={styles.ecard_info}>Status: {status}</p>
-          {status === "booked" && (
-            <p className={styles.ecard_info}>Client: {client}</p>
-          )}
+          {status === "booked" && <p className={styles.ecard_info}>{client}</p>}
           <div className={styles.ecard_tag_row}>
             <div className={styles.ecard_tag_item}>
               <img

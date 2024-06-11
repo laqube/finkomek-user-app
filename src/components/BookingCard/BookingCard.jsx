@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 const apiKey = import.meta.env.VITE_API_KEY;
 import { Link } from "react-router-dom";
+import moment from "moment-timezone";
 
 const BookingCard = ({ item }) => {
   const { t } = useTranslation("translation");
@@ -15,6 +16,12 @@ const BookingCard = ({ item }) => {
       setExpert(response.data.expert);
     });
   }, []);
+
+  const timezone = "UTC+5";
+  const formattedDate = moment(timeStart).tz(timezone).format("DD.MM");
+  const formattedTime = `${moment(timeStart)
+    .tz(timezone)
+    .format("HH:mm")}-${moment(timeEnd).tz(timezone).format("HH:mm")}`;
 
   return (
     <div className={styles.bookingcard_container}>
@@ -30,7 +37,7 @@ const BookingCard = ({ item }) => {
               className={styles.bc_info_icon}
               src="/assets/bc_calendar_icon.svg"
             />
-            <p className={styles.bc_info_detail}>date</p>
+            <p className={styles.bc_info_detail}>{formattedDate} </p>
           </div>
           <div className={styles.bc_info_item}>
             <img
@@ -38,7 +45,7 @@ const BookingCard = ({ item }) => {
               className={styles.bc_info_icon}
               src="/assets/bc_clock_icon.svg"
             />
-            <p className={styles.bc_info_detail}>time</p>
+            <p className={styles.bc_info_detail}>{formattedTime} </p>
           </div>
         </div>
       </div>
