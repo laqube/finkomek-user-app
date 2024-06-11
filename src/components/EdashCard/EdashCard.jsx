@@ -48,7 +48,7 @@ const EdashCard = ({ item }) => {
     <div className={containerClassName}>
       <div className={styles.ecard_col1}>
         <div className={styles.ecard_info_container}>
-          <h1 className={styles.ecard_heading}>Meeting name</h1>
+          <h1 className={styles.ecard_heading}>{t("expert.ecard_name")} </h1>
           {status === "booked" && <p className={styles.ecard_info}>{client}</p>}
           <div className={styles.ecard_tag_row}>
             <div className={styles.ecard_tag_item}>
