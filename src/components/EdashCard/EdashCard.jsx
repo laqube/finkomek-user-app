@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { API } from "../../api";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import moment from "moment";
+import moment from "moment-timezone";
 
 const EdashCard = ({ item }) => {
   const { t } = useTranslation("translation");
@@ -42,10 +42,11 @@ const EdashCard = ({ item }) => {
     navigate(`/meeting/${roomId}`);
   };
 
-  const formattedDate = moment(timeStart).format("MM.DD");
-  const formattedTime = `${moment(timeStart).format("HH:mm")}-${moment(
-    timeEnd
-  ).format("HH:mm")}`;
+  const timezone = "Asia/Karachi"; // GMT+5 timezone
+  const formattedDate = moment(timeStart).tz(timezone).format("MM.DD");
+  const formattedTime = `${moment(timeStart)
+    .tz(timezone)
+    .format("HH:mm")}-${moment(timeEnd).tz(timezone).format("HH:mm")}`;
 
   return (
     <div className={containerClassName}>
