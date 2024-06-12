@@ -14,10 +14,10 @@ const EdashCard = ({ item }) => {
   const role = "0373095710";
 
   useEffect(() => {
-    if (status === "available") {
-      API.get(`user/${userId}`).then((response) => {
-        const { firstName, lastName } = response.data.user;
-        setClient(`${firstName} ${lastName}`);
+    if (status === "booked") {
+      API.get(`/api/get-user/${userId}`).then((response) => {
+        // const { firstName, lastName } = response.data.user;
+        setClient(`${response.data.fname} ${response.data.lname}`);
       });
     }
   }, [status, userId]);

@@ -6,10 +6,10 @@ import { useParams } from "react-router";
 import { API } from "../../api";
 
 const apiKey = import.meta.env.VITE_API_KEY;
+const agoraToken = import.meta.env.VITE_AGORA_KEY;
 
 const appId = "1e3ab4257f214ba3a0d88545a38a8895";
-const token =
-  "007eJxTYPBTuHLT6NlW1to45r9PVnxzMbydci7Co33FvJ27Vv3aOHGDAoNhqnFikomRqXmakaFJUqJxokGKhYWpiWmisUWihYWl6V+RjLSGQEYG8wvRLIwMEAjiszOkZBbk5OcmMjAAAGg2Irw=";
+const token = agoraToken;
 const channel = "diploma";
 
 const MeetingRoom = () => {
@@ -19,27 +19,25 @@ const MeetingRoom = () => {
   const [messageInput, setMessageInput] = useState("");
   const socketRef = useRef(null);
 
-  const [localTrack, setLocalTrack] = useState(null);
-  const [remoteTrack, setRemoteTrack] = useState(null);
+  const [localVideoTrack, setLocalVideoTrack] = useState(null);
+  const [localAudioTrack, setLocalAudioTrack] = useState(null);
+  const [remoteTracks, setRemoteTracks] = useState([]);
   const client = useRef(null);
 
-  //set username based on the role
+  const [isCallActive, setIsCallActive] = useState(false);
+  const [isCameraOn, setIsCameraOn] = useState(true);
+  const [isMicOn, setIsMicOn] = useState(true);
 
   const fetchUserData = async () => {
     try {
       let response;
       if (role === "2968903924") {
         response = await API.get(`/user`);
-        setSender(
-          `${response.data.user.fname} ${" "} ${response.data.user.lname}`
-        );
+        setSender(`${response.data.user.fname} ${response.data.user.lname}`);
       } else if (role === "0373095710") {
         response = await API.get(`/expert/get`);
-
         setSender(
-          `${response.data.expert.firstName} ${" "} ${
-            response.data.expert.lastName
-          }`
+          `${response.data.expert.firstName} ${response.data.expert.lastName}`
         );
       }
     } catch (error) {
@@ -75,38 +73,70 @@ const MeetingRoom = () => {
     }
   };
 
-  // Agora conneciton setup
-  // useEffect(() => {
-  //   const initAgora = async () => {
-  //     client.current = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  };
 
-  //     client.current.on("user-published", async (user, mediaType) => {
-  //       await client.current.subscribe(user, mediaType);
-  //       if (mediaType === "video") {
-  //         const remoteTrack = user.videoTrack;
-  //         setRemoteTrack(remoteTrack);
-  //         remoteTrack.play("remote_stream");
-  //       }
-  //     });
+  // Initialize Agora connection and video/audio streams when call button is clicked
+  const startCall = async () => {
+    client.current = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 
-  //     client.current.on("user-unpublished", (user) => {
-  //       setRemoteTrack(null);
-  //     });
+    client.current.on("user-published", async (user, mediaType) => {
+      await client.current.subscribe(user, mediaType);
+      if (mediaType === "video" || mediaType === "audio") {
+        const remoteTrack = user[`${mediaType}Track`];
+        setRemoteTracks((prevTracks) => [...prevTracks, remoteTrack]);
+        remoteTrack.play(mediaType === "video" ? "remote_stream" : undefined);
+      }
+    });
 
-  //     await client.current.join(appId, channel, token, null);
-  //     const localTrack = await AgoraRTC.createCameraVideoTrack();
-  //     setLocalTrack(localTrack);
-  //     localTrack.play("local_stream");
-  //     await client.current.publish([localTrack]);
-  //   };
+    client.current.on("user-unpublished", (user, mediaType) => {
+      const trackId = user.uid;
+      setRemoteTracks((prevTracks) =>
+        prevTracks.filter((track) => track.getUserId() !== trackId)
+      );
+    });
 
-  //   initAgora();
+    await client.current.join(appId, channel, token, null);
 
-  //   return () => {
-  //     localTrack?.close();
-  //     client.current?.leave();
-  //   };
-  // }, []);
+    const localVideoTrack = await AgoraRTC.createCameraVideoTrack();
+    const localAudioTrack = await AgoraRTC.createMicrophoneAudioTrack();
+    setLocalVideoTrack(localVideoTrack);
+    setLocalAudioTrack(localAudioTrack);
+    localVideoTrack.play("local_stream");
+    await client.current.publish([localVideoTrack, localAudioTrack]);
+
+    setIsCallActive(true);
+  };
+
+  const endCall = async () => {
+    localVideoTrack?.close();
+    localAudioTrack?.close();
+    remoteTracks.forEach((track) => track.stop());
+    client.current?.leave();
+    setIsCallActive(false);
+    setRemoteTracks([]);
+  };
+
+  const toggleCamera = async () => {
+    if (isCameraOn) {
+      await localVideoTrack.setEnabled(false);
+    } else {
+      await localVideoTrack.setEnabled(true);
+    }
+    setIsCameraOn(!isCameraOn);
+  };
+
+  const toggleMic = async () => {
+    if (isMicOn) {
+      await localAudioTrack.setEnabled(false);
+    } else {
+      await localAudioTrack.setEnabled(true);
+    }
+    setIsMicOn(!isMicOn);
+  };
 
   return (
     <div className={styles.page_wrapper}>
@@ -130,34 +160,64 @@ const MeetingRoom = () => {
                 </span>
               </div>
               <div className={styles.buttons_row}>
-                <button id="webcamButton" className={styles.button}>
-                  <img
-                    alt="cam"
-                    src="/assets/camera_button.svg"
-                    className={styles.buttonimg}
-                  />
-                </button>
-                <button id="callButton" className={styles.button}>
-                  <img
-                    alt="call"
-                    src="/assets/call_button.svg"
-                    className={styles.buttonimg}
-                  />
-                </button>
-                <button id="answerButton" className={styles.button}>
-                  <img
-                    alt="answer"
-                    src="/assets/answer_button.svg"
-                    className={styles.buttonimg}
-                  />
-                </button>
-                <button id="hangupButton" className={styles.button}>
-                  <img
-                    alt="hangup"
-                    src="/assets/hangup_button.svg"
-                    className={styles.buttonimg}
-                  />
-                </button>
+                {!isCallActive && (
+                  <button
+                    id="callButton"
+                    className={styles.button}
+                    onClick={startCall}
+                  >
+                    <img
+                      alt="call"
+                      src="/assets/call_button.svg"
+                      className={styles.buttonimg}
+                    />
+                  </button>
+                )}
+                {isCallActive && (
+                  <>
+                    <button
+                      id="webcamButton"
+                      className={styles.button}
+                      onClick={toggleCamera}
+                    >
+                      <img
+                        alt="cam"
+                        src={
+                          isCameraOn
+                            ? "/assets/camera_button.svg"
+                            : "/assets/camera_off_button.svg"
+                        }
+                        className={styles.buttonimg}
+                      />
+                    </button>
+                    <button
+                      id="micButton"
+                      className={styles.button}
+                      onClick={toggleMic}
+                    >
+                      <img
+                        alt="mic"
+                        src={
+                          isMicOn
+                            ? "/assets/mic_button.svg"
+                            : "/assets/mic_off_button.svg"
+                        }
+                        className={styles.buttonimg}
+                      />
+                    </button>
+                    <button
+                      id="hangupButton"
+                      className={styles.button}
+                      onClick={endCall}
+                    >
+                      <img
+                        alt="hangup"
+                        src="/assets/hangup_button.svg"
+                        className={styles.buttonimg}
+                      />
+                    </button>
+                  </>
+                )}
               </div>
             </div>
             <div className={styles.row2_chat_column}>
@@ -180,6 +240,7 @@ const MeetingRoom = () => {
                     placeholder="Type your message..."
                     value={messageInput}
                     onChange={(e) => setMessageInput(e.target.value)}
+                    onKeyDown={handleKeyPress}
                   />
                   <button className={styles.chat_button} onClick={sendMessage}>
                     <img src="/assets/send_icon.svg" alt="send" />
