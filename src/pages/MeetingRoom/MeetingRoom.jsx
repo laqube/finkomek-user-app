@@ -9,7 +9,9 @@ const apiKey = import.meta.env.VITE_API_KEY;
 const agoraToken = import.meta.env.VITE_AGORA_KEY;
 
 const appId = "1e3ab4257f214ba3a0d88545a38a8895";
-const token = agoraToken;
+// const token = agoraToken;
+const token =
+  "007eJxTYAj390qfLRfI+GPrtRPcOaeSrVjT6t9rmKtbmuyK8vNdkKjAYJhqnJhkYmRqnmZkaJKUaJxokGJhYWpimmhskWhhYWk64VFmWkMgI8PjyuOMjAwQCOKzM6RkFuTk5yYyMAAA4V8eoQ==";
 const channel = "diploma";
 
 const MeetingRoom = () => {
