@@ -8,8 +8,9 @@ import moment from "moment-timezone";
 
 const BookingCard = ({ item }) => {
   const { t } = useTranslation("translation");
-  const { Id, roomId, status, timeStart, timeEnd, expertId } = item;
+  const { Id, userId, expertId, roomId, status, timeStart, timeEnd } = item;
   const [expert, setExpert] = useState({});
+  const role = "2968903924";
 
   useEffect(() => {
     axios.get(`${apiKey}/expert/${expertId}`).then((response) => {
@@ -50,7 +51,7 @@ const BookingCard = ({ item }) => {
         </div>
       </div>
       <div className={styles.bc_col_buttons}>
-        <Link to={`/meeting/${roomId}`}>
+        <Link to={`/meeting/${roomId}/${role}`}>
           <button className={styles.bc_button_yes}>
             {t("card_meet.button_connect")}
           </button>

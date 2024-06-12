@@ -3,6 +3,7 @@ import AgoraRTC from "agora-rtc-sdk-ng";
 import styles from "./meetingroom.module.css";
 import ExpertNavigation from "../../components/ExpertNavigation/ExpertNavigation";
 import { useParams } from "react-router";
+import { API } from "../../api";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -12,8 +13,9 @@ const token =
 const channel = "diploma";
 
 const MeetingRoom = () => {
-  let { roomId } = useParams();
+  let { roomId, role } = useParams();
   const [messages, setMessages] = useState([]);
+  const [sender, setSender] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const socketRef = useRef(null);
 
@@ -21,8 +23,34 @@ const MeetingRoom = () => {
   const [remoteTrack, setRemoteTrack] = useState(null);
   const client = useRef(null);
 
+  //set username based on the role
+
+  const fetchUserData = async () => {
+    try {
+      let response;
+      if (role === "2968903924") {
+        response = await API.get(`/user`);
+        setSender(
+          `${response.data.user.fname} ${" "} ${response.data.user.lname}`
+        );
+      } else if (role === "0373095710") {
+        response = await API.get(`/expert/get`);
+
+        setSender(
+          `${response.data.expert.firstName} ${" "} ${
+            response.data.expert.lastName
+          }`
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
   // WebSocket connection setup
   useEffect(() => {
+    fetchUserData();
+
     socketRef.current = new WebSocket(`${apiKey}/chat/ws/${roomId}`);
 
     socketRef.current.onopen = () => {
@@ -39,45 +67,46 @@ const MeetingRoom = () => {
     };
   }, [roomId]);
 
-  useEffect(() => {
-    const initAgora = async () => {
-      client.current = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
-
-      client.current.on("user-published", async (user, mediaType) => {
-        await client.current.subscribe(user, mediaType);
-        if (mediaType === "video") {
-          const remoteTrack = user.videoTrack;
-          setRemoteTrack(remoteTrack);
-          remoteTrack.play("remote_stream");
-        }
-      });
-
-      client.current.on("user-unpublished", (user) => {
-        setRemoteTrack(null);
-      });
-
-      await client.current.join(appId, channel, token, null);
-      const localTrack = await AgoraRTC.createCameraVideoTrack();
-      setLocalTrack(localTrack);
-      localTrack.play("local_stream");
-      await client.current.publish([localTrack]);
-    };
-
-    initAgora();
-
-    return () => {
-      localTrack?.close();
-      client.current?.leave();
-    };
-  }, []);
-
   const sendMessage = () => {
     if (messageInput.trim() !== "") {
-      const message = { username: "Abo lox", message: messageInput };
+      const message = { username: sender, message: messageInput };
       socketRef.current.send(JSON.stringify(message));
       setMessageInput("");
     }
   };
+
+  // Agora conneciton setup
+  // useEffect(() => {
+  //   const initAgora = async () => {
+  //     client.current = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+
+  //     client.current.on("user-published", async (user, mediaType) => {
+  //       await client.current.subscribe(user, mediaType);
+  //       if (mediaType === "video") {
+  //         const remoteTrack = user.videoTrack;
+  //         setRemoteTrack(remoteTrack);
+  //         remoteTrack.play("remote_stream");
+  //       }
+  //     });
+
+  //     client.current.on("user-unpublished", (user) => {
+  //       setRemoteTrack(null);
+  //     });
+
+  //     await client.current.join(appId, channel, token, null);
+  //     const localTrack = await AgoraRTC.createCameraVideoTrack();
+  //     setLocalTrack(localTrack);
+  //     localTrack.play("local_stream");
+  //     await client.current.publish([localTrack]);
+  //   };
+
+  //   initAgora();
+
+  //   return () => {
+  //     localTrack?.close();
+  //     client.current?.leave();
+  //   };
+  // }, []);
 
   return (
     <div className={styles.page_wrapper}>
@@ -138,8 +167,9 @@ const MeetingRoom = () => {
                 </div>
                 <div className={styles.chat_body}>
                   {messages.map((message, index) => (
-                    <div key={index} className="message">
-                      {message.username} {message.message}
+                    <div key={index} className={styles.message}>
+                      <p className={styles.chat_sender}>{message.username}</p>
+                      <p className={styles.chat_message}>{message.message}</p>
                     </div>
                   ))}
                 </div>

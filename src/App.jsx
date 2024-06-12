@@ -53,7 +53,7 @@ const App = () => {
           />
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/settings" element={<UserSettings />} />
-          <Route path="/meeting/:roomId" element={<MeetingRoom />} />
+          <Route path="/meeting/:roomId/:role" element={<MeetingRoom />} />
           <Route path="*" element={<Navigate to={"/user"} replace />} />
         </>
       )}
@@ -61,7 +61,7 @@ const App = () => {
       {role === "expert" && (
         <>
           <Route path="/expert/dashboard" element={<ExpertDashboard />} />
-          <Route path="/meeting/:roomId" element={<MeetingRoom />} />
+          <Route path="/meeting/:roomId/:role" element={<MeetingRoom />} />
           <Route
             path="*"
             element={<Navigate to={"/expert/dashboard"} replace />}

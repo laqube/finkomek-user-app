@@ -11,6 +11,7 @@ const EdashCard = ({ item }) => {
   const navigate = useNavigate();
   const { Id, userId, expertId, timeStart, timeEnd, roomId, status } = item;
   const [client, setClient] = useState("");
+  const role = "0373095710";
 
   useEffect(() => {
     if (status === "available") {
@@ -34,7 +35,7 @@ const EdashCard = ({ item }) => {
   };
 
   const handleConnect = () => {
-    navigate(`/meeting/${roomId}`);
+    navigate(`/meeting/${roomId}/${role}`);
   };
 
   // Correctly handling timezone with moment-timezone
