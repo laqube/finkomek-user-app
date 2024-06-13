@@ -11,7 +11,7 @@ const agoraToken = import.meta.env.VITE_AGORA_KEY;
 const appId = "1e3ab4257f214ba3a0d88545a38a8895";
 // const token = agoraToken;
 const token =
-  "007eJxTYAj390qfLRfI+GPrtRPcOaeSrVjT6t9rmKtbmuyK8vNdkKjAYJhqnJhkYmRqnmZkaJKUaJxokGJhYWpimmhskWhhYWk64VFmWkMgI8PjyuOMjAwQCOKzM6RkFuTk5yYyMAAA4V8eoQ==";
+  "007eJxTYMhwV/StMI9cpvNJ61v0tdNR4gdMFonHNvflLijd+0PIZLsCg2GqcWKSiZGpeZqRoUlSonGiQYqFhamJaaKxRaKFhaWphFZ2WkMgI4Oe4UlmRgYIBPHZGVIyC3LycxMZGAAiBR44";
 const channel = "diploma";
 
 const MeetingRoom = () => {
