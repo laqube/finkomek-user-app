@@ -3,7 +3,7 @@
   height: 100vh;
   flex-direction: column;
   overflow-y: scroll;
-  justify-content: space-between;
+  justify-content: start;
 }
 .page_wrapper::-webkit-scrollbar {
   width: 0px;
@@ -21,6 +21,7 @@
   display: flex;
   justify-content: start;
   align-items: start;
+  height: 100%;
 }
 
 .page_column {

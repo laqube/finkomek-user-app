@@ -48,38 +48,38 @@ const MeetingRoom = () => {
   };
 
   // WebSocket connection setup
+
   useEffect(() => {
-    fetchUserData();
+    const socket = new WebSocket(`${apiKey}/chat/ws/${roomId}`);
 
-    socketRef.current = new WebSocket(`${apiKey}/chat/ws/${roomId}`);
+    const pingInterval = setInterval(() => {
+      if (socket.readyState === WebSocket.OPEN) {
+        socket.send(JSON.stringify({ type: "ping" }));
+      }
+    }, 30000); // Клиент отправляет ping каждые 30 секунд
 
-    socketRef.current.onopen = () => {
+    socket.onopen = () => {
       console.log("WebSocket connection established.");
     };
 
-    socketRef.current.onmessage = (event) => {
-      const receivedMessage = JSON.parse(event.data);
-      setMessages((prevMessages) => [...prevMessages, receivedMessage]);
+    socket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      if (message.type && message.type === "pong") {
+        console.log("Pong received");
+        return;
+      }
+      setMessages((prevMessages) => [...prevMessages, message]);
+    };
+
+    socket.onclose = (event) => {
+      console.log("WebSocket connection closed:", event.reason);
     };
 
     return () => {
-      socketRef.current.close();
+      clearInterval(pingInterval);
+      socket.close();
     };
   }, [roomId]);
-
-  const sendMessage = () => {
-    if (messageInput.trim() !== "") {
-      const message = { username: sender, message: messageInput };
-      socketRef.current.send(JSON.stringify(message));
-      setMessageInput("");
-    }
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      sendMessage();
-    }
-  };
 
   // Initialize Agora connection and video/audio streams when call button is clicked
   const startCall = async () => {

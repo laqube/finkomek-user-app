@@ -5,7 +5,7 @@
   gap: 10px;
   overflow-y: scroll;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
 }
 .page_wrapper::-webkit-scrollbar {
   width: 0px;
@@ -27,6 +27,7 @@
   justify-content: start;
   gap: 2%;
   margin: 0 5%;
+  height: 100%;
 }
 
 .page_heading {

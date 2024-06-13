@@ -19,6 +19,7 @@ const UserCourses = ({ item }) => {
         setCourses([]);
       });
   }, []);
+
   return (
     <div className={styles.ucourse}>
       <h1 className={styles.ucourse_heading}>

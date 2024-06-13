@@ -11,7 +11,8 @@ const ExpertCreateModal = (props) => {
   const [Date, setDate] = useState("");
   const [Start, setStart] = useState("");
   const [End, setEnd] = useState("");
-  const handleCreateMeet = (e) => {
+
+  const handleCreateMeet = async (e) => {
     e.preventDefault();
     if (Date === "" || Start === "" || End === "") {
       alert("Please fill all the fields");
@@ -22,29 +23,23 @@ const ExpertCreateModal = (props) => {
       timeEnd: `${Date}T${End}:00Z`,
     };
     try {
-      API.post(`/expert/create/meet`, bodyText);
-      props.handleCloseModal();
-      alert("success!");
-      setDate("");
-      setStart("");
-      setEnd("");
-      window.location.reload();
-      //   const response = API.post(`/expert/create/meet`, bodyText);
-
-      //   console.log("This is the response", response);
-      //   if (response.status === 200) {
-      //     props.handleCloseModal();
-      //     alert("Success!");
-      //     setDate("");
-      //     setStart("");
-      //     setEnd("");
-      //   } else {
-      //     alert(response.data.message);
-      //   }
+      const response = await API.post(`/expert/create/meet`, bodyText);
+      console.log("This is the response", response);
+      if (response.status === 200) {
+        alert("Success!");
+        setDate("");
+        setStart("");
+        setEnd("");
+        props.handleCloseModal();
+        window.location.reload();
+      } else {
+        alert("Please make sure that request is in future time");
+      }
     } catch (error) {
-      alert(error);
+      alert("Please make sure that request is in future time");
     }
   };
+
   return (
     <ReactModal
       isOpen={props.isOpen}

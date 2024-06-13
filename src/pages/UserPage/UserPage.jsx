@@ -20,6 +20,8 @@ import UserCalendar from "../../components/UserCalendar/UserCalendar";
 const UserPage = () => {
   const { t } = useTranslation("translation");
   const [user, setUser] = useState([]);
+  const [activeTab, setActiveTab] = useState("dashboard");
+
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -45,16 +47,31 @@ const UserPage = () => {
             }}
           >
             <Menu>
-              <MenuItem> {t("page_home.user_dashboard")}</MenuItem>
-              <MenuItem> {t("page_home.user_courses")} </MenuItem>
-              <MenuItem> {t("page_home.user_meets")} </MenuItem>
+              <MenuItem
+                active={activeTab === "dashboard"}
+                onClick={() => setActiveTab("dashboard")}
+              >
+                {t("page_home.user_dashboard")}
+              </MenuItem>
+              <MenuItem
+                active={activeTab === "courses"}
+                onClick={() => setActiveTab("courses")}
+              >
+                {t("page_home.user_courses")}
+              </MenuItem>
+              <MenuItem
+                active={activeTab === "meets"}
+                onClick={() => setActiveTab("meets")}
+              >
+                {t("page_home.user_meets")}
+              </MenuItem>
             </Menu>
           </Sidebar>
         </div>
         <div className={styles.page_column_tabs}>
-          <UserDashboard item={user} />
-          <UserCalendar item={user} />
-          <UserCourses item={user} />
+          {activeTab === "dashboard" && <UserDashboard item={user} />}
+          {activeTab === "courses" && <UserCourses item={user} />}
+          {activeTab === "meets" && <UserCalendar item={user} />}
         </div>
       </div>
       <Footer />
