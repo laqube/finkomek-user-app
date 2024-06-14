@@ -5,6 +5,7 @@ import axios from "axios";
 const apiKey = import.meta.env.VITE_API_KEY;
 import { Link } from "react-router-dom";
 import moment from "moment-timezone";
+import { API } from "../../api";
 
 const BookingCard = ({ item }) => {
   const { t } = useTranslation("translation");
@@ -23,6 +24,21 @@ const BookingCard = ({ item }) => {
   const formattedTime = `${moment(timeStart)
     .tz(timezone)
     .format("HH:mm")}-${moment(timeEnd).tz(timezone).format("HH:mm")}`;
+
+  const handleCancel = async () => {
+    try {
+      const response = await API.delete(
+        `${apiKey}/user/meeting/delete-meeting/${roomId}`
+      );
+      console.log(response);
+      if (response.status === 204) {
+        alert("Консультациядан бас тарттыңыз");
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Қате орнады", error);
+    }
+  };
 
   return (
     <div className={styles.bookingcard_container}>
@@ -57,7 +73,7 @@ const BookingCard = ({ item }) => {
           </button>
         </Link>
 
-        <button className={styles.bc_button_no}>
+        <button className={styles.bc_button_no} onClick={handleCancel}>
           {t("card_meet.button_cancel")}
         </button>
       </div>

@@ -4,6 +4,8 @@ import styles from "./meetingroom.module.css";
 import ExpertNavigation from "../../components/ExpertNavigation/ExpertNavigation";
 import { useParams } from "react-router";
 import { API } from "../../api";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const agoraToken = import.meta.env.VITE_AGORA_KEY;
@@ -15,6 +17,7 @@ const token =
 const channel = "diploma";
 
 const MeetingRoom = () => {
+  const { t } = useTranslation("translation");
   let { roomId, role } = useParams();
   const [messages, setMessages] = useState([]);
   const [sender, setSender] = useState("");
@@ -147,8 +150,12 @@ const MeetingRoom = () => {
       <div className={styles.page_container}>
         <div className={styles.room_container}>
           <div className={styles.room_row1}>
-            <h1 className={styles.row1_heading}>Консультацияға қосылыңыз</h1>
-            <button className={styles.row1_button}>Басты бетке оралу</button>
+            <h1 className={styles.row1_heading}>{t("page_meet.heading")} </h1>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <button className={styles.row1_button}>
+                {t("page_meet.back")}{" "}
+              </button>
+            </Link>
           </div>
           <div className={styles.room_row2}>
             <div className={styles.row2_call_column}>
